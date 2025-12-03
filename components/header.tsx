@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { usePathname } from "next/navigation";
+import { ModalPopup } from "@/components/modal-popup";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -16,13 +17,14 @@ const NAV_LINKS = [
   { href: "/venture-fund", label: "Venture Fund" },
   { href: "/impact", label: "Impact" },
   { href: "/future-initiatives", label: "Future Initiatives" },
-    { href: "/partners-ecosystem", label: "Partners & Ecosystem" },
+  { href: "/partners-ecosystem", label: "Partners & Ecosystem" },
   { href: "/contact", label: "Contact" },
   { href: "/careers", label: "Careers" },
 ];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const pathname = usePathname();
 
   return (
@@ -66,7 +68,10 @@ export function Header() {
             {/* Right Actions */}
             <div className="flex items-center gap-4">
               <ThemeToggle />
-              <Button className="bg-red-600 text-white hover:bg-red-700 rounded-full px-6">
+              <Button
+                className="bg-red-600 text-white hover:bg-red-700 rounded-full px-6"
+                onClick={() => setShowModal(true)}
+              >
                 Apply
               </Button>
             </div>
@@ -138,13 +143,18 @@ export function Header() {
                   </Link>
                 );
               })}
-              <Button className="w-full mt-6 bg-red-600 text-white hover:bg-red-700 rounded-full">
+              <Button
+                className="w-full mt-6 bg-red-600 text-white hover:bg-red-700 rounded-full"
+                onClick={() => setShowModal(true)}
+              >
                 Apply
               </Button>
             </div>
           </div>
         </div>
       )}
+      {/* Modal Popup */}
+      <ModalPopup open={showModal} onClose={() => setShowModal(false)} />
     </>
   );
 }

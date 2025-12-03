@@ -11,7 +11,8 @@ export default function PartnersEcosystemPage() {
             Partners & Ecosystem
           </h1>
           <p className="text-lg text-foreground/70 mb-8">
-            Discover our partners and the broader ecosystem supporting Salvy VentureCorp's mission to build and scale African ventures.
+            Discover our partners and the broader ecosystem supporting Salvy
+            VentureCorp's mission to build and scale African ventures.
           </p>
         </div>
       </section>
