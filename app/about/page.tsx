@@ -42,23 +42,23 @@ export default function AboutPage() {
 
   const team = [
     {
-      name: "Founder & CEO",
-      role: "Vision & Leadership",
-      image: "/placeholder.svg?key=team1",
+      name: "Salvation Alibor",
+      role: "Founder & President",
+      image: "/salvy.jpg",
     },
     {
-      name: "Chief Operating Officer",
-      role: "Operations & Strategy",
-      image: "/placeholder.svg?key=team2",
+      name: "Amb. Joe Keshi ",
+      role: "Chairman, UBA Plc",
+      image: "/kachi2.jpg",
     },
     {
-      name: "Head of Ventures",
-      role: "Portfolio Management",
+      name: "Dcn. Chris Iyovwaye",
+      role: "Chairman/CEO, Wellmann Group",
       image: "/placeholder.svg?key=team3",
     },
     {
-      name: "Head of Capital",
-      role: "Fund Management",
+      name: "Remi Olumuyiwa",
+      role: "Managing Director, First Trico",
       image: "/placeholder.svg?key=team4",
     },
   ];
@@ -150,39 +150,6 @@ export default function AboutPage() {
                 />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values */}
-      <section className="w-full py-16 md:py-24 bg-secondary/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Our Core Values
-            </h2>
-            <p className="text-lg text-foreground/70">
-              The principles that guide everything we do
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {values.map((value) => {
-              const IconComponent = value.icon;
-              return (
-                <Card key={value.label} className="p-6 md:p-8">
-                  <div className="flex items-start gap-4">
-                    <IconComponent className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="text-lg font-semibold text-foreground mb-2">
-                        {value.label}
-                      </h3>
-                      <p className="text-foreground/60">{value.description}</p>
-                    </div>
-                  </div>
-                </Card>
-              );
-            })}
           </div>
         </div>
       </section>
