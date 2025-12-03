@@ -85,6 +85,30 @@ export function EcosystemSection() {
                 "bg-yellow-100",
               ][idx % 4];
 
+              // Make Venture Studio card clickable
+              if (card.title === "Venture Studio") {
+                return (
+                  <a
+                    key={card.id}
+                    href="/venture-studio"
+                    className={`block p-6 rounded-xl ${lightBg} dark:bg-secondary border border-border hover:border-primary transition-all hover:shadow-lg cursor-pointer`}
+                  >
+                    <div className="mb-4">
+                      <div
+                        className={`${iconBg} w-12 h-12 rounded-lg flex items-center justify-center`}
+                      >
+                        <Icon className="w-6 h-6 text-primary" />
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">
+                      {card.title}
+                    </h3>
+                    <p className="text-foreground/60 text-sm leading-relaxed">
+                      {card.description}
+                    </p>
+                  </a>
+                );
+              }
               return (
                 <div
                   key={card.id}

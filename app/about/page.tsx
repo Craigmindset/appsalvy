@@ -238,14 +238,14 @@ export default function AboutPage() {
             landscape
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 text-base font-semibold">
-              Start Building
+            <Button className="bg-primary dark:bg-foreground text-primary-foreground hover:bg-primary/90 dark:hover:bg-amber-500 rounded-full px-8 py-6 text-base font-semibold">
+              Build with us
             </Button>
             <Button
               variant="outline"
-              className="rounded-full px-8 py-6 text-base font-semibold border-2 border-primary text-primary hover:bg-primary/10 bg-transparent"
+              className="rounded-full px-8 py-6 text-base font-semibold border-2 border-primary text-primary hover:bg-primary/10 dark:hover:bg-orange-500 bg-transparent"
             >
-              Learn More
+              Partner with us
             </Button>
           </div>
         </div>

@@ -11,12 +11,12 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "#venture-studio", label: "Venture Studio" },
+  { href: "/venture-studio", label: "Venture Studio" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "#venture-fund", label: "Venture Fund" },
-  { href: "#impact", label: "Impact" },
-  { href: "#future", label: "Future Initiatives" },
-  { href: "#partners", label: "Partners & Ecosystem" },
+  { href: "/venture-fund", label: "Venture Fund" },
+  { href: "/impact", label: "Impact" },
+  { href: "/future-initiatives", label: "Future Initiatives" },
+    { href: "/partners-ecosystem", label: "Partners & Ecosystem" },
   { href: "/contact", label: "Contact" },
   { href: "/careers", label: "Careers" },
 ];
