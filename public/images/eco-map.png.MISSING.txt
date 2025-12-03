@@ -1,0 +1,11 @@
+Place the provided dotted world-map PNG at: public/images/eco-map.png
+
+This project now references the image at `/images/eco-map.png` in `components/ecosystem-section.tsx`.
+
+How to add the image locally (PowerShell):
+
+  mkdir -Force public\images;
+  # Copy the actual PNG you attached into the folder, for example:
+  # Copy-Item -Path C:\path\to\dotted-world-map.png -Destination .\public\images\eco-map.png
+
+Once the PNG is placed, reload the dev server and you should see the dotted world map behind the ecosystem image with reduced opacity.

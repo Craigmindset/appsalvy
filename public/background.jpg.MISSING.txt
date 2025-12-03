@@ -1,0 +1,11 @@
+Place the provided background image at: public/background.jpg
+
+This project now references `/background.jpg` in `components/ecosystem-section.tsx` as the section background.
+
+How to add the image locally (PowerShell):
+
+  mkdir -Force public;
+  # Copy the actual JPG you attached into the folder, for example:
+  # Copy-Item -Path C:\path\to\attached-background.jpg -Destination .\public\background.jpg
+
+Once the JPG is placed, reload the dev server and the Ecosystem section will use it as the primary background.

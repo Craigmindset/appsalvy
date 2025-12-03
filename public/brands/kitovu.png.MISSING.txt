@@ -1,0 +1,11 @@
+Place the provided Kitovu PNG here at: public/brands/kitovu.png
+
+This repository currently references `/brands/kitovu.png` in `components/carousel-section.tsx`.
+
+How to add the image locally (PowerShell):
+
+  mkdir -Force public\brands;
+  # Copy the actual PNG you attached into the folder, for example:
+  # Copy-Item -Path C:\path\to\Kitovu.png -Destination .\public\brands\kitovu.png
+
+Once the PNG is placed, the carousel will display it automatically.
