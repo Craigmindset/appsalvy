@@ -8,6 +8,9 @@ const HERO_IMAGES = ["/hero0.png", "/herox.png", "/hero3.png"];
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const WORDS = ["Startups", "Entrepreneurs", "Founders"];
+  const [wordVisible, setWordVisible] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -40,17 +43,28 @@ export function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 lg:space-y-8">
+          <div className="space-y-6 lg:space-y-8 ml-10 -mt-5">
             <div className="space-y-2">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground font-georgia hero-building">
                 Building Africa's
               </h1>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-primary">
-                Next Generation of Companies
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium  italic text-primary">
+                Next <span className="italic">Generation</span> of Companies
               </h3>
+              {/* Rotating word slider */}
+              <div className="mt-1 lg:-mt-1 h-10">
+                <span
+                  aria-live="polite"
+                  className={`text-2xl sm:text-3xl lg:text-5xl font-semibold tracking-tight transition-hero-color font-georgia italic text-[#8B0000] dark:text-white transition-opacity duration-500 ${
+                    wordVisible ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {WORDS[currentWordIndex]}
+                </span>
+              </div>
             </div>
 
-            <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed max-w-md">
+            <p className="text-lg sm:text-xl text-foreground/70 leading-snug max-w-md">
               Salvy VentureCorp is a Venture Architecture Studio designing,
               building, and scaling high-impact African ventures with structure,
               discipline, capital, and talent.
@@ -70,7 +84,6 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-
           {/* Right Column - Image Slider */}
           <div className="relative h-96 lg:h-full min-h-96 lg:min-h-screen flex items-center justify-center">
             <div className="relative w-full h-full p-8 rounded-2xl overflow-hidden ">
