@@ -1,37 +1,62 @@
-"use client"
+"use client";
 
-// Brand logos - using placeholder rectangles for now
-const BRAND_LOGOS = Array.from({ length: 8 }, (_, i) => ({
-  id: i,
-  name: `Brand ${i + 1}`,
-}))
+import React, { useEffect, useRef } from "react";
+
+// Brand images referenced from `public/brands/`
+const brandLogos = [
+  { name: "Kitovu", src: "/brands/port1.png" },
+  { name: "brand 2", src: "/brands/port2.png" },
+  { name: "Mara", src: "/brands/port3.png" },
+  { name: "brand 4", src: "/brands/port4.png" },
+  { name: "brand 5", src: "/brands/port5.png" },
+  { name: "brand 6", src: "/brands/port6.png" },
+];
 
 export function CarouselSection() {
-  return (
-    <section className="w-full py-16 lg:py-24 bg-secondary/50 dark:bg-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Trusted by Leading Brands</h2>
-          <p className="text-foreground/60 text-lg">Partnering with Africa's most innovative entrepreneurs</p>
-        </div>
+  const trackRef = useRef<HTMLDivElement | null>(null);
 
-        {/* Scrollable Logo Carousel */}
-        <div className="overflow-x-auto pb-4">
-          <div className="flex gap-6 md:gap-8 min-w-max px-4 md:px-0 md:justify-center md:flex-wrap">
-            {BRAND_LOGOS.map((brand) => (
-              <div
-                key={brand.id}
-                className="flex-shrink-0 w-32 h-32 md:w-40 md:h-24 bg-background dark:bg-card rounded-lg flex items-center justify-center border border-border shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary/30">{brand.id + 1}</div>
-                  <p className="text-xs text-foreground/40 mt-1">{brand.name}</p>
+  useEffect(() => {
+    let raf = 0;
+    const el = trackRef.current;
+    if (!el) return;
+    let x = 0;
+    const step = () => {
+      x -= 0.4;
+      el.style.transform = `translateX(${x}px)`;
+      if (Math.abs(x) > el.scrollWidth / 2) x = 0;
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  return (
+    <section className=" bg-white w-full h-auto">
+      <div className="container mx-auto overflow-hidden">
+        <div className="py-6">
+          <h2 className="text-xl font-semibold text-black text-left ml-10 mb-4">
+            Our growing Portfolio
+          </h2>
+          <div className="relative">
+            <div
+              className="flex gap-4 md:gap-10 will-change-transform"
+              ref={trackRef}
+            >
+              {[...brandLogos, ...brandLogos].map((b, i) => (
+                <div key={i} className="shrink-0">
+                  <img
+                    src={b.src}
+                    alt={`${b.name} logo`}
+                    className="h-12 w-[100px] object-contain"
+                  />
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
+
+export default CarouselSection;

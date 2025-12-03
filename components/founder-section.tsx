@@ -1,5 +1,12 @@
-"use client"
-import { Target, Lightbulb, Heart, Rocket, Handshake, Globe } from "lucide-react"
+"use client";
+import {
+  Target,
+  Lightbulb,
+  Heart,
+  Rocket,
+  Handshake,
+  Globe,
+} from "lucide-react";
 
 const VALUES = [
   { id: 1, icon: Heart, label: "Integrity" },
@@ -8,7 +15,7 @@ const VALUES = [
   { id: 4, icon: Rocket, label: "Value Creation" },
   { id: 5, icon: Handshake, label: "Founder Partnership" },
   { id: 6, icon: Globe, label: "Africa-First" },
-]
+];
 
 export function FounderSection() {
   return (
@@ -16,8 +23,12 @@ export function FounderSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Our Mission & Vision</h2>
-          <p className="text-foreground/60 text-lg">Guiding our journey to transform African entrepreneurship</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            Our Mission & Vision
+          </h2>
+          <p className="text-foreground/60 text-lg">
+            Guiding our journey to transform African entrepreneurship
+          </p>
         </div>
 
         {/* Two Column Layout */}
@@ -32,10 +43,12 @@ export function FounderSection() {
                     <Target className="w-6 h-6 text-primary" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">Mission</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  Mission
+                </h3>
                 <p className="text-foreground/70 leading-relaxed">
-                  To architect, build, and scale high-impact ventures by providing founders with structure, platforms,
-                  and capital.
+                  To architect, build, and scale high-impact ventures by
+                  providing founders with structure, platforms, and capital.
                 </p>
               </div>
 
@@ -46,19 +59,24 @@ export function FounderSection() {
                     <Lightbulb className="w-6 h-6 text-primary" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">Vision</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  Vision
+                </h3>
                 <p className="text-foreground/70 leading-relaxed">
-                  To build 1,000 African ventures by 2050 — transforming industries and empowering communities.
+                  To build 1,000 African ventures by 2050 — transforming
+                  industries and empowering communities.
                 </p>
               </div>
             </div>
 
             {/* Values Section */}
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-8">Our Values</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-8">
+                Our Values
+              </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {VALUES.map((value) => {
-                  const Icon = value.icon
+                  const Icon = value.icon;
                   return (
                     <div
                       key={value.id}
@@ -67,9 +85,11 @@ export function FounderSection() {
                       <div className="flex justify-center mb-2">
                         <Icon className="w-5 h-5 text-primary" />
                       </div>
-                      <p className="font-semibold text-foreground text-sm">{value.label}</p>
+                      <p className="font-semibold text-foreground text-sm">
+                        {value.label}
+                      </p>
                     </div>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -90,5 +110,5 @@ export function FounderSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
