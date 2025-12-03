@@ -37,7 +37,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="shrink-0">
               <Image
                 src="/salvy-logo.png"
                 alt="Salvy"
@@ -86,7 +86,7 @@ export function Header() {
       >
         <div className="flex items-center justify-between px-4 h-16">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="shrink-0">
             <Image
               src="/salvy-logo.png"
               alt="Salvy"
