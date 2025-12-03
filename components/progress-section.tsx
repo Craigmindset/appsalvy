@@ -55,7 +55,7 @@ export default function Progress() {
 
   return (
     <section className="w-full bg-[#111217] text-white py-20 px-6 md:px-20">
-      <div className="absolute inset-0 bg-black/10 z-0" />
+      <div className="absolute inset-0  z-0" />
       <div className="relative z-10">
         <div
           className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-start"
