@@ -4,11 +4,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const HERO_IMAGES = [
-  "/placeholder.svg?key=9qycu",
-  "/placeholder.svg?key=nal7a",
-  "/placeholder.svg?key=vdo7f",
-];
+const HERO_IMAGES = ["/hero0.png", "/herox.png", "/hero3.png"];
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -77,7 +73,7 @@ export function HeroSection() {
 
           {/* Right Column - Image Slider */}
           <div className="relative h-96 lg:h-full min-h-96 lg:min-h-screen flex items-center justify-center">
-            <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative w-full h-full p-8 rounded-2xl overflow-hidden ">
               {HERO_IMAGES.map((image, index) => (
                 <div
                   key={index}
@@ -85,7 +81,8 @@ export function HeroSection() {
                   style={{
                     opacity: index === currentSlide ? 1 : 0,
                     backgroundImage: `url('${image}')`,
-                    backgroundSize: "cover",
+                    backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
                   }}
                 />
@@ -94,13 +91,13 @@ export function HeroSection() {
               {/* Navigation Arrows */}
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all lg:hidden"
               >
                 <ChevronLeft className="h-6 w-6" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-all lg:hidden"
               >
                 <ChevronRight className="h-6 w-6" />
               </button>
