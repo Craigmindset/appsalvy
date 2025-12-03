@@ -19,92 +19,104 @@ const VALUES = [
 
 export function FounderSection() {
   return (
-    <section className="w-full py-16 lg:py-24 bg-secondary/50 dark:bg-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <div className="mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Our Mission & Vision
-          </h2>
-          <p className="text-foreground/60 text-lg">
-            Guiding our journey to transform African entrepreneurship
-          </p>
-        </div>
-
-        {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start mb-16">
-          {/* Left Column - Cards (60%) */}
-          <div className="lg:col-span-3">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-              {/* Mission Card */}
-              <div className="p-8 rounded-xl bg-background dark:bg-card border border-border hover:border-primary transition-all hover:shadow-lg">
-                <div className="mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
-                    <Target className="w-6 h-6 text-primary" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Mission
-                </h3>
-                <p className="text-foreground/70 leading-relaxed">
-                  To architect, build, and scale high-impact ventures by
-                  providing founders with structure, platforms, and capital.
-                </p>
-              </div>
-
-              {/* Vision Card */}
-              <div className="p-8 rounded-xl bg-background dark:bg-card border border-border hover:border-primary transition-all hover:shadow-lg">
-                <div className="mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
-                    <Lightbulb className="w-6 h-6 text-primary" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Vision
-                </h3>
-                <p className="text-foreground/70 leading-relaxed">
-                  To build 1,000 African ventures by 2050 — transforming
-                  industries and empowering communities.
-                </p>
-              </div>
-            </div>
-
-            {/* Values Section */}
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-8">
-                Our Values
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {VALUES.map((value) => {
-                  const Icon = value.icon;
-                  return (
-                    <div
-                      key={value.id}
-                      className="p-4 rounded-lg bg-background dark:bg-card border border-border hover:border-primary transition-all text-center"
-                    >
-                      <div className="flex justify-center mb-2">
-                        <Icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <p className="font-semibold text-foreground text-sm">
-                        {value.label}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+    <section className="relative w-full py-16 lg:py-24 bg-secondary/50 dark:bg-secondary overflow-hidden">
+      {/* Background Image with Opacity */}
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/b2.jpg')",
+          opacity: 0.4,
+          zIndex: 0,
+        }}
+      />
+      <div className="relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Title */}
+          <div className="mb-12 lg:mb-16 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-red-600 mb-4">
+              Our Mission & Vision
+            </h2>
+            <p className="text-foreground/60 text-lg">
+              Guiding our journey to transform African entrepreneurship
+            </p>
           </div>
 
-          {/* Right Column - Image (40%) */}
-          <div className="lg:col-span-2">
-            <div className="relative h-96 lg:h-full min-h-96 rounded-2xl overflow-hidden shadow-xl">
-              <div
-                className="w-full h-full bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url(/placeholder.svg?height=500&width=400&query=Founder collaborating and building venture)",
-                }}
-              />
+          {/* Two Column Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start mb-16">
+            {/* Left Column - Cards (60%) */}
+            <div className="lg:col-span-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                {/* Mission Card */}
+                <div className="p-8 rounded-xl bg-red-50 dark:bg-card border border-border hover:border-primary/50 transition-all hover:shadow-lg">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                      <Target className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground">
+                      Mission
+                    </h3>
+                  </div>
+                  <p className="text-foreground/70 leading-relaxed">
+                    To architect, build, and scale high-impact ventures by
+                    providing founders with structure, platforms, and capital.
+                  </p>
+                </div>
+
+                {/* Vision Card */}
+                <div className="p-8 rounded-xl bg-white dark:bg-card border border-border hover:border-primary/50 transition-all hover:shadow-lg">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                      <Lightbulb className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground">
+                      Vision
+                    </h3>
+                  </div>
+                  <p className="text-foreground/70 leading-relaxed">
+                    To build 1,000 African ventures by 2050 — transforming
+                    industries and empowering communities.
+                  </p>
+                </div>
+              </div>
+
+              {/* Values Section */}
+              <div>
+                <h3 className="text-2xl font-bold text-destructive text-center mb-4">
+                  Our Values
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  {VALUES.map((value) => {
+                    const Icon = value.icon;
+                    return (
+                      <div
+                        key={value.id}
+                        className="p-4 rounded-lg bg-background dark:bg-card border border-border hover:border-primary/50 transition-all text-center"
+                      >
+                        <div className="flex justify-center mb-2">
+                          <Icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <p className="font-semibold text-foreground text-sm">
+                          {value.label}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Image (40%) */}
+            <div className="lg:col-span-2 ">
+              <div className="relative h-96 lg:h-full min-h-96 rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src="/Salvy.jpg"
+                  alt="Founder"
+                  className="w-full h-full object-cover rounded-2xl shadow-xl"
+                />
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 text-white text-center py-2 text-sm font-medium rounded-b-2xl">
+                  Salvation Alibor, Founder & President
+                </div>
+              </div>
             </div>
           </div>
         </div>
