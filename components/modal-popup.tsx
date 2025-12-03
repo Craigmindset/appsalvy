@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Info } from "lucide-react";
+import Link from "next/link";
 
 interface ModalPopupProps {
   open: boolean;
@@ -45,9 +46,13 @@ export function ModalPopup({ open, onClose }: ModalPopupProps) {
               <Info className="w-5 h-5" />
             </button>
           </div>
-          <a href="#" className="text-primary underline text-base">
+          <Link
+            href="/founder-form"
+            className="text-primary underline text-base"
+            onClick={onClose}
+          >
             Click Here
-          </a>
+          </Link>
         </div>
 
         {/* Partner Card */}
@@ -72,9 +77,13 @@ export function ModalPopup({ open, onClose }: ModalPopupProps) {
               <Info className="w-5 h-5" />
             </button>
           </div>
-          <a href="#" className="text-primary underline text-base">
+          <Link
+            href="/partner-form"
+            className="text-primary underline text-base"
+            onClick={onClose}
+          >
             Click Here
-          </a>
+          </Link>
         </div>
 
         {/* Info Popups */}
