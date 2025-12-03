@@ -44,7 +44,7 @@ export default function AboutPage() {
     {
       name: "Salvation Alibor",
       role: "Founder & President",
-      image: "/salvy.jpg",
+      image: "/Salvy.jpg",
     },
     {
       name: "Amb. Joe Keshi ",
@@ -149,7 +149,10 @@ export default function AboutPage() {
                   (Xpark360), artisan workforce formalization (ArtisanOga),
                   financial inclusion for market women (WakaBanki), and
                   agricultural transformation (Kitovu) — we spent 18 years
-                  building solutions to structural African problems.
+                  building solutions to structural African problems.The insight
+                  was clear: Africa does not lack innovators. Africa lacks
+                  venture-building institutions. Salvy VentureCorp was created
+                  to fill that gap.
                 </p>
               </div>
             </div>
