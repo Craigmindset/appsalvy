@@ -54,12 +54,12 @@ export default function AboutPage() {
     {
       name: "Dcn. Chris Iyovwaye",
       role: "Chairman/CEO, Wellmann Group",
-      image: "/placeholder.svg?key=team3",
+      image: "/sample.jpg",
     },
     {
       name: "Remi Olumuyiwa",
       role: "Managing Director, First Trico",
-      image: "/placeholder.svg?key=team4",
+      image: "/sample.jpg",
     },
   ];
 
@@ -96,8 +96,21 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="w-full py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full py-16 md:py-24 relative">
+        {/* Background image with reduced opacity */}
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: `url('/background.jpg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.1,
+            zIndex: 0,
+          }}
+        />
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0  z-10"></div>
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column: Mission/Vision + Story */}
             <div className="lg:col-span-7">
@@ -155,11 +168,11 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="w-full py-16 md:py-24">
+      <section className="w-full py-16 md:py-24 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Our Leadership Team
+              Leadership & Board
             </h2>
             <p className="text-lg text-foreground/70">
               Meet the visionaries behind Salvy VentureCorp
@@ -188,14 +201,17 @@ export default function AboutPage() {
       </section>
 
       {/* Impact Section */}
-      <section className="w-full py-16 md:py-24 bg-primary">
+      <section className="w-full py-16 md:py-24 bg-destructive dark:bg-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-center">
             {[
-              { number: "50+", label: "Ventures Built" },
-              { number: "$100M+", label: "Capital Deployed" },
-              { number: "1000+", label: "Founders Supported" },
-              { number: "15", label: "African Countries" },
+              { number: "18+ Years", label: "Venture Building" },
+              { number: "6", label: "High Impact Sectors" },
+              {
+                number: "Multiple",
+                label: "Portfolio Presence in African countries",
+              },
+              { number: "Millions", label: "Lives Touched" },
             ].map((stat, index) => (
               <div key={index} className="text-primary-foreground">
                 <p className="text-3xl sm:text-4xl font-bold mb-2">
