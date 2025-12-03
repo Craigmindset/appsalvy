@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -22,11 +23,15 @@ const NAV_LINKS = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <>
       {/* Desktop Header */}
-      <header className="hidden md:block sticky top-0 z-40 w-full bg-background/95 backdrop-blur border-b border-border">
+      <header
+        className="hidden md:block sticky top-0 z-40 w-full bg-background/95 backdrop-blur border-b border-border"
+        style={{ fontFamily: "'Geist', 'Geist Fallback', sans-serif" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -41,16 +46,21 @@ export function Header() {
             </Link>
 
             {/* Center Navigation */}
-            <nav className="hidden lg:flex items-center gap-1">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-3 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <nav className="hidden lg:flex items-center gap-0.5">
+              {NAV_LINKS.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`px-3 py-2 text-sm font-medium ${
+                      isActive ? "text-red-800" : "text-foreground/75"
+                    } hover:text-red-800 transition-colors`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Right Actions */}
@@ -65,7 +75,10 @@ export function Header() {
       </header>
 
       {/* Mobile Header */}
-      <header className="md:hidden sticky top-0 z-40 w-full bg-background/95 backdrop-blur border-b border-border">
+      <header
+        className="md:hidden sticky top-0 z-40 w-full bg-background/95 backdrop-blur border-b border-border"
+        style={{ fontFamily: "'Geist', 'Geist Fallback', sans-serif" }}
+      >
         <div className="flex items-center justify-between px-4 h-16">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
@@ -105,18 +118,26 @@ export function Header() {
           />
 
           {/* Sidebar - 70% */}
-          <div className="absolute inset-y-0 left-0 w-7/10 bg-background shadow-lg overflow-y-auto">
+          <div
+            className="absolute inset-y-0 left-0 w-7/10 bg-background shadow-lg overflow-y-auto"
+            style={{ fontFamily: "'Geist', 'Geist Fallback', sans-serif" }}
+          >
             <div className="p-4 pt-24 space-y-2">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-4 py-3 text-base font-medium ${
+                      isActive ? "text-red-800" : "text-foreground"
+                    } hover:text-red-800 rounded-lg transition-colors`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <Button className="w-full mt-6 bg-red-600 text-white hover:bg-red-700 rounded-full">
                 Apply
               </Button>
