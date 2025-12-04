@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/venture-studio", label: "Venture Studio" },
-  { href: "/", label: "Portfolio" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/venture-fund", label: "Venture Fund" },
   { href: "/", label: "Impact" },
   { href: "/", label: "Future Initiatives" },
