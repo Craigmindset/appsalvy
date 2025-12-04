@@ -38,8 +38,8 @@ export function ChatWidget() {
             rel="noopener noreferrer"
             className={cn(
               "flex items-center gap-3 p-4 rounded-lg shadow-lg",
-              "bg-red-600 border border-border hover:border-primary transition-all",
-              "text-white hover:scale-105"
+              "bg-card border border-border hover:border-primary transition-all",
+              "text-black hover:scale-105"
             )}
           >
             <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
@@ -62,8 +62,8 @@ export function ChatWidget() {
             href="mailto:hello@salvyventure.com"
             className={cn(
               "flex items-center gap-3 p-4 rounded-lg shadow-lg",
-              "bg-red-600 border border-border hover:border-primary transition-all",
-              "text-white hover:scale-105"
+              "bg-card border border-border hover:border-primary transition-all",
+              "text-black hover:scale-105"
             )}
           >
             <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
@@ -80,8 +80,8 @@ export function ChatWidget() {
             href="tel:+1234567890"
             className={cn(
               "flex items-center gap-3 p-4 rounded-lg shadow-lg",
-              "bg-red-600 border border-border hover:border-primary transition-all",
-              "text-white hover:scale-105"
+              "bg-card border border-border hover:border-primary transition-all",
+              "text-black hover:scale-105"
             )}
           >
             <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center">
