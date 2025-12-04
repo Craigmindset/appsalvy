@@ -14,7 +14,7 @@ export function ChatWidget() {
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
           "fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-lg transition-all duration-300",
-          "bg-primary text-primary-foreground hover:bg-primary/90",
+          "bg-destructive text-primary-foreground hover:bg-primary/90",
           "flex items-center justify-center w-14 h-14",
           "md:w-16 md:h-16 md:bottom-8 md:right-8",
           isOpen && "scale-110"
