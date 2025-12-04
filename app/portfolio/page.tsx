@@ -191,30 +191,6 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="w-full py-16 md:py-24 bg-secondary/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {[
-              {
-                number: PORTFOLIO_ITEMS.length + "+",
-                label: "Ventures in Portfolio",
-              },
-              { number: "6", label: "Industry Sectors" },
-              { number: "$50M+", label: "Total Funding Deployed" },
-              { number: "10K+", label: "Jobs Created" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <p className="text-3xl sm:text-4xl font-bold text-primary mb-2">
-                  {stat.number}
-                </p>
-                <p className="text-foreground/70">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </main>
   );
