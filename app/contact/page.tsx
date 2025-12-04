@@ -47,7 +47,12 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email",
-      details: ["hello@salvyventure.com", "partnerships@salvyventure.com"],
+      details: [
+        "General Inquiries: info@salvy.ng",
+        "Founder Applications: ventures@salvy.ng",
+        "Investor Relations: investors@salvy.ng",
+        "Partnerships: partnerships@salvy.ng",
+      ],
     },
     {
       icon: Phone,
