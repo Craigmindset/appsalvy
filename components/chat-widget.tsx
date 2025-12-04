@@ -59,7 +59,7 @@ export function ChatWidget() {
 
           {/* Email */}
           <a
-            href="mailto:hello@salvyventure.com"
+            href="mailto:info@salvy.ng"
             className={cn(
               "flex items-center gap-3 p-4 rounded-lg shadow-lg",
               "bg-card border border-border hover:border-primary transition-all",
@@ -77,7 +77,7 @@ export function ChatWidget() {
 
           {/* Phone */}
           <a
-            href="tel:+1234567890"
+            href="tel:+2349135111099"
             className={cn(
               "flex items-center gap-3 p-4 rounded-lg shadow-lg",
               "bg-card border border-border hover:border-primary transition-all",
