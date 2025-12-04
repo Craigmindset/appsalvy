@@ -57,7 +57,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+234 913 511 1099", "Business Hours: Mon-Fri, 9AM-5PM WAT"],
+      details: ["+234 913 511 1099", "Business Hours: Mon-Fri,  9AM-5PM"],
     },
     {
       icon: MapPin,
@@ -71,14 +71,15 @@ export default function ContactPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-b from-background to-secondary/30 py-16 md:py-24">
+      <section className="w-full bg-black py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+          <div className="max-w-6xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-4xl font-bold text-center  text-card dark:text-foreground mb-6">
               Get in Touch
             </h1>
-            <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed">
-              Have a question or want to collaborate? We'd love to hear from
+            <p className="text-lg sm:text-xl text-center text-card dark:text-foreground/70 leading-relaxed">
+              Have a question or want to collaborate? We'd love to hear from{" "}
+              <br />
               you. Reach out to our team and let's build something extraordinary
               together.
             </p>
@@ -87,20 +88,30 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="w-full py-16 md:py-24">
+      <section className="w-full py-16 md:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 mb-16">
-            {contactInfo.map((info) => {
+            {contactInfo.map((info, idx) => {
               const IconComponent = info.icon;
+              const bgColors = [
+                "bg-blue-100 dark:bg-blue-950",
+                "bg-green-100 dark:bg-green-950",
+                "bg-red-100 dark:bg-red-950",
+              ];
               return (
-                <Card key={info.title} className="p-8">
-                  <IconComponent className="w-10 h-10 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold text-foreground mb-4">
-                    {info.title}
-                  </h3>
+                <Card
+                  key={info.title}
+                  className={`p-8 ${bgColors[idx % bgColors.length]}`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <IconComponent className="w-10 h-10 text-primary" />
+                    <h3 className="text-xl font-semibold text-foreground">
+                      {info.title}
+                    </h3>
+                  </div>
                   <div className="space-y-2">
-                    {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-foreground/70">
+                    {info.details.map((detail, dIdx) => (
+                      <p key={dIdx} className="text-foreground/70">
                         {detail}
                       </p>
                     ))}
