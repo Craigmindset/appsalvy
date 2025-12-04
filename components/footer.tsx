@@ -1,5 +1,5 @@
-"use client"
-import { Linkedin, Facebook } from "lucide-react"
+"use client";
+import { Linkedin, Facebook } from "lucide-react";
 
 const FOOTER_SECTIONS = [
   {
@@ -37,20 +37,22 @@ const FOOTER_SECTIONS = [
       { label: "Facebook", href: "https://facebook.com", external: true },
     ],
   },
-]
+];
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <>
       {/* Main Footer */}
       <footer className="w-full bg-black text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-10">
             {FOOTER_SECTIONS.map((section) => (
               <div key={section.title}>
-                <h3 className="font-semibold text-lg mb-6 text-white">{section.title}</h3>
+                <h3 className="font-semibold text-lg mb-6 text-white">
+                  {section.title}
+                </h3>
                 <ul className="space-y-3">
                   {section.links.map((link) => (
                     <li key={link.label}>
@@ -92,10 +94,12 @@ export function Footer() {
       </footer>
 
       {/* Site Footer */}
-      <div className="w-full bg-black border-t border-gray-800">
+      <div className="w-full bg-blue-500 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-gray-400 text-sm">© {currentYear} Salvy VentureCorp. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">
+              © {currentYear} Salvy VentureCorp. All rights reserved.
+            </p>
             <div className="flex gap-6 text-sm text-gray-400">
               <a href="#privacy" className="hover:text-white transition-colors">
                 Privacy Policy
@@ -108,5 +112,5 @@ export function Footer() {
         </div>
       </div>
     </>
-  )
+  );
 }

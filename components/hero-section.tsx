@@ -43,9 +43,9 @@ export function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 lg:space-y-8 ml-10 -mt-5">
+          <div className="space-y-6 lg:space-y-8 ml-1 -mt-5">
             <div className="space-y-2">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground font-georgia hero-building">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground font-georgia hero-building whitespace-normal break-words">
                 Building Africa's
               </h1>
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium  italic text-primary">

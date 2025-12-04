@@ -94,9 +94,9 @@ export default function ContactPage() {
             {contactInfo.map((info, idx) => {
               const IconComponent = info.icon;
               const bgColors = [
-                "bg-blue-100 dark:bg-blue-950",
-                "bg-green-100 dark:bg-green-950",
-                "bg-red-100 dark:bg-red-950",
+                "bg-blue-50 dark:bg-blue-950",
+                "bg-green-50 dark:bg-green-950",
+                "bg-amber-50 dark:bg-amber-950",
               ];
               return (
                 <Card
@@ -277,7 +277,7 @@ export default function ContactPage() {
                   "While we have expertise in tech, we invest in high-impact ventures across multiple sectors including fintech, agritech, healthtech, and enterprise software.",
               },
             ].map((faq, index) => (
-              <Card key={index} className="p-6">
+              <Card key={index} className="p-4 sm:p-6">
                 <h3 className="text-lg font-semibold text-foreground mb-3">
                   {faq.question}
                 </h3>
