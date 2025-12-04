@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { useState } from "react";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -16,28 +16,32 @@ export default function ContactPage() {
     phone: "",
     subject: "",
     message: "",
-  })
+  });
 
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData)
-    setIsSubmitted(true)
+    console.log("Form submitted:", formData);
+    setIsSubmitted(true);
     setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
-    }, 3000)
-  }
+      setIsSubmitted(false);
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    }, 3000);
+  };
 
   const contactInfo = [
     {
@@ -48,14 +52,14 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+234 (0) 701 234 5678", "Business Hours: Mon-Fri, 9AM-5PM WAT"],
+      details: ["+234 913 511 1099", "Business Hours: Mon-Fri, 9AM-5PM WAT"],
     },
     {
       icon: MapPin,
       title: "Location",
-      details: ["Lagos, Nigeria", "Pan-African Presence in 15+ Countries"],
+      details: ["29, Ogundana Street, Ikeja, Lagos, Nigeria"],
     },
-  ]
+  ];
 
   return (
     <main className="min-h-screen bg-background">
@@ -65,10 +69,13 @@ export default function ContactPage() {
       <section className="w-full bg-gradient-to-b from-background to-secondary/30 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">Get in Touch</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+              Get in Touch
+            </h1>
             <p className="text-lg sm:text-xl text-foreground/70 leading-relaxed">
-              Have a question or want to collaborate? We'd love to hear from you. Reach out to our team and let's build
-              something extraordinary together.
+              Have a question or want to collaborate? We'd love to hear from
+              you. Reach out to our team and let's build something extraordinary
+              together.
             </p>
           </div>
         </div>
@@ -79,11 +86,13 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 mb-16">
             {contactInfo.map((info) => {
-              const IconComponent = info.icon
+              const IconComponent = info.icon;
               return (
                 <Card key={info.title} className="p-8">
                   <IconComponent className="w-10 h-10 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold text-foreground mb-4">{info.title}</h3>
+                  <h3 className="text-xl font-semibold text-foreground mb-4">
+                    {info.title}
+                  </h3>
                   <div className="space-y-2">
                     {info.details.map((detail, idx) => (
                       <p key={idx} className="text-foreground/70">
@@ -92,7 +101,7 @@ export default function ContactPage() {
                     ))}
                   </div>
                 </Card>
-              )
+              );
             })}
           </div>
         </div>
@@ -102,9 +111,12 @@ export default function ContactPage() {
       <section className="w-full py-16 md:py-24 bg-secondary/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Send us a Message</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Send us a Message
+            </h2>
             <p className="text-lg text-foreground/70">
-              Fill out the form below and our team will get back to you within 24 hours
+              Fill out the form below and our team will get back to you within
+              24 hours
             </p>
           </div>
 
@@ -114,15 +126,21 @@ export default function ContactPage() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 dark:bg-green-950 rounded-full mb-4">
                   <Send className="w-8 h-8 text-green-600 dark:text-green-400" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent Successfully!</h3>
-                <p className="text-foreground/70">Thank you for reaching out. We'll be in touch shortly.</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2">
+                  Message Sent Successfully!
+                </h3>
+                <p className="text-foreground/70">
+                  Thank you for reaching out. We'll be in touch shortly.
+                </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name & Email Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Full Name
+                    </label>
                     <input
                       type="text"
                       name="name"
@@ -134,7 +152,9 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Email Address</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Email Address
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -150,7 +170,9 @@ export default function ContactPage() {
                 {/* Phone & Subject Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Phone Number</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Phone Number
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -161,7 +183,9 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Subject</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Subject
+                    </label>
                     <select
                       name="subject"
                       value={formData.subject}
@@ -180,7 +204,9 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Message</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Message
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -236,7 +262,9 @@ export default function ContactPage() {
               },
             ].map((faq, index) => (
               <Card key={index} className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">{faq.question}</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">
+                  {faq.question}
+                </h3>
                 <p className="text-foreground/70">{faq.answer}</p>
               </Card>
             ))}
@@ -246,5 +274,5 @@ export default function ContactPage() {
 
       <Footer />
     </main>
-  )
+  );
 }
