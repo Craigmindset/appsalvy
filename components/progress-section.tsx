@@ -67,53 +67,89 @@ export default function Progress() {
     <section className="w-full bg-[#111217] text-white py-20 px-6 md:px-20">
       <div className="absolute inset-0 z-0" />
       <div className="relative z-10">
-        <div
-          className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-start"
-          style={{ gridTemplateColumns: "45% 10% 45%" }}
-        >
-          {/* Left Column */}
-          <div className="relative">
-            <h1 className="text-4xl md:text-3xl font-semibold leading-tight mb-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Mobile layout: stacked columns */}
+          <div className="block md:hidden">
+            <h1 className="text-2xl font-semibold mb-2 text-center">
               Our 25+ years Mandate
             </h1>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
+            <div className="grid grid-cols-1 gap-4 mb-8 mx-2">
               {items.map((item, index) => (
-                <div key={index} className="flex flex-col gap-3">
-                  {/* Icon hidden */}
-                  <h3 className="text-lg font-medium">{item.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                <div
+                  key={index}
+                  className="flex flex-col gap-2 items-center text-center w-full max-w-xs mx-auto"
+                >
+                  <h3 className="text-base font-medium">{item.title}</h3>
+                  <p className="text-gray-400 text-xs leading-relaxed text-justify">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+            {/* Mobile Horizontal Separator */}
+            <div className="my-8">
+              <div className="h-px w-full bg-gray-700" />
+            </div>
+            <h1 className="text-2xl font-semibold mb-2 text-center">
+              Our 18 Years Impact
+            </h1>
+            <div className="grid grid-cols-1 gap-4 mb-8 mx-2">
+              {impactItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col gap-2 items-center text-center w-full max-w-xs mx-auto"
+                >
+                  <h3 className="text-base font-medium">{item.title}</h3>
+                  <p className="text-gray-400 text-xs leading-relaxed text-justify">
                     {item.text}
                   </p>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Middle Column - Vertical Separator */}
-          <div className="hidden md:flex flex-col items-center justify-center">
-            <div
-              className="w-px h-full bg-gray-700"
-              style={{ minHeight: "450px" }}
-            />
-          </div>
-
-          {/* Right Column */}
-          <div className="relative md:mr-10">
-            <h1 className="text-3xl md:text-3xl font-semibold leading-tight mb-8">
-              Our 18 Years Impact
-            </h1>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
-              {impactItems.map((item, index) => (
-                <div key={index} className="flex flex-col gap-3">
-                  {/* Icon hidden */}
-                  <h3 className="text-lg font-medium">{item.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
+          {/* Desktop/Tablet: 3-column grid */}
+          <div
+            className="hidden md:grid md:grid-cols-3 gap-12 items-start"
+            style={{ gridTemplateColumns: "45% 10% 45%" }}
+          >
+            {/* Left Column */}
+            <div className="relative">
+              <h1 className="text-3xl font-semibold leading-tight mb-8">
+                Our 25+ years Mandate
+              </h1>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
+                {items.map((item, index) => (
+                  <div key={index} className="flex flex-col gap-3">
+                    <h3 className="text-lg font-medium">{item.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Middle Column - Vertical Separator */}
+            <div className="flex flex-col items-center justify-center">
+              <div
+                className="w-px h-full bg-gray-700"
+                style={{ minHeight: "450px" }}
+              />
+            </div>
+            {/* Right Column */}
+            <div className="relative md:mr-10">
+              <h1 className="text-3xl font-semibold leading-tight mb-8">
+                Our 18 Years Impact
+              </h1>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
+                {impactItems.map((item, index) => (
+                  <div key={index} className="flex flex-col gap-3">
+                    <h3 className="text-lg font-medium">{item.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -29,6 +29,20 @@ export function HeroSection() {
     );
   };
 
+  // Rotate the small word slider under the subtitle with a short fade
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // fade out
+      setWordVisible(false);
+      setTimeout(() => {
+        setCurrentWordIndex((i) => (i + 1) % WORDS.length);
+        // fade in
+        setWordVisible(true);
+      }, 300);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative w-full min-h-screen bg-background overflow-hidden">
       {/* Background Image with Low Opacity */}
@@ -48,7 +62,7 @@ export function HeroSection() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground font-georgia hero-building whitespace-normal break-words">
                 Building Africa's
               </h1>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium  italic text-primary">
+              <h3 className="text-xl sm:text-3xl lg:text-4xl font-medium italic text-primary whitespace-nowrap">
                 Next <span className="italic">Generation</span> of Companies
               </h3>
               {/* Rotating word slider */}
