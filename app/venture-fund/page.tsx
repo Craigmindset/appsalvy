@@ -16,22 +16,22 @@ export default function VentureFundPage() {
   const items = [
     {
       title: "Studio-born ventures",
-      text: "50 ventures • Studio/Fund operational • University groundwork • SEZ planning",
+      text: "Ventures ideated, launched, and scaled within our studio, leveraging shared resources and expert guidance from day one.",
       icon: faChartLine,
     },
     {
       title: "early-stage and seed companies",
-      text: "50 ventures • Salvy University Launch • Research Hubs • 10,000 trained founders",
+      text: "Supporting founders at the earliest stages with capital, mentorship, and a robust launchpad for rapid growth.",
       icon: faCog,
     },
     {
       title: "high-impact sectors",
-      text: "SEZ Phase 1 • Studio in SEZ • 300 ventures",
+      text: "Focusing on industries with the greatest potential for economic and social transformation across Africa.",
       icon: faChartBar,
     },
     {
       title: "ventures with governance and product validation",
-      text: "SEZ Phase 2 • Industry clusters scaling • export expansion",
+      text: "Ensuring every venture is built on strong governance and validated products, ready for scale and investment.",
       icon: faMobileAlt,
     },
   ];
@@ -39,27 +39,27 @@ export default function VentureFundPage() {
   const impactItems = [
     {
       title: "De-risked, structured pipeline",
-      text: "Over 300 startups supported and scaled.",
+      text: "A proven process that identifies, supports, and scales high-potential startups, reducing risk for investors and founders alike.",
       icon: faRocket,
     },
     {
       title: "Governance from day zero",
-      text: "Thousands of jobs generated across Africa.",
+      text: "Robust governance frameworks are embedded from the start, ensuring transparency, accountability, and sustainable growth.",
       icon: faBriefcase,
     },
     {
       title: "Investment discipline",
-      text: "Impact in 20+ African countries.",
+      text: "A rigorous, data-driven approach to investment decisions, maximizing impact and returns across diverse African markets.",
       icon: faGlobeAfrica,
     },
     {
       title: "Pan-African market intelligence",
-      text: "$50M+ invested in founders and ventures.",
+      text: "Deep insights and on-the-ground expertise drive strategic decisions and unlock opportunities across the continent.",
       icon: faMoneyBillWave,
     },
     {
       title: "Long-term institutional vision",
-      text: "$50M+ invested in founders and ventures.",
+      text: "A commitment to building enduring value, fostering innovation, and shaping Africa’s future through patient, strategic investment.",
       icon: faMoneyBillWave,
     },
   ];
@@ -78,60 +78,102 @@ export default function VentureFundPage() {
             catalytic capital with governance at its core.
           </p>
         </div>
+        {/*seperator section*/}
       </section>
       <section className="w-full bg-[#111217] text-white py-20 px-6 md:px-20">
         <div className="absolute inset-0  z-0" />
         <div className="relative z-10">
-          <div
-            className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-start"
-            style={{ gridTemplateColumns: "45% 10% 45%" }}
-          >
-            {/* Left Column */}
-            <div className="relative">
-              <h1 className="text-4xl md:text-3xl font-semibold leading-tight mb-8">
+          {/* Responsive layout: stacked on mobile, grid on md+ */}
+          <div className="max-w-7xl mx-auto">
+            {/* Mobile: Centered, single block */}
+            <div className="block md:hidden">
+              <h1 className="text-2xl font-semibold mb-2 text-center">
                 Investment Focus
               </h1>
-              <p className="text-gray-400 text-sm leading-relaxed mb-8">
+              <p className="text-gray-400 text-sm leading-relaxed mb-4 text-center">
                 We Invest in
               </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
+              <div className="grid grid-cols-1 gap-4 mb-8 mx-2">
                 {items.map((item, index) => (
-                  <div key={index} className="flex flex-col gap-3">
-                    {/* Icon hidden */}
-                    <h3 className="text-lg font-medium">{item.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
+                  <div
+                    key={index}
+                    className="flex flex-col gap-2 items-center text-center w-full max-w-xs mx-auto"
+                  >
+                    <h3 className="text-base font-medium">{item.title}</h3>
+                    <p className="text-gray-400 text-xs leading-relaxed text-left">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              {/* Mobile Horizontal Separator */}
+              <div className="my-8">
+                <div className="h-px w-full bg-gray-700" />
+              </div>
+              {/* Mobile: Column 3 */}
+              <h1 className="text-xl font-semibold mb-4 text-center">
+                Why Investors Trust Us
+              </h1>
+              <div className="grid grid-cols-1 gap-4 mb-8 mx-2">
+                {impactItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col gap-2 items-center text-center w-full max-w-xs mx-auto"
+                  >
+                    <h3 className="text-base font-medium">{item.title}</h3>
+                    <p className="text-gray-400 text-xs leading-relaxed text-left">
                       {item.text}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Middle Column - Vertical Separator */}
-            <div className="hidden md:flex flex-col items-center justify-center">
-              <div
-                className="w-px h-full bg-gray-700"
-                style={{ minHeight: "450px" }}
-              />
-            </div>
-
-            {/* Right Column */}
-            <div className="relative md: mr-10">
-              <h1 className="text-3xl md:text-3xl font-semibold leading-tight mb-8">
-                Why Investors Trust Us
-              </h1>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
-                {impactItems.map((item, index) => (
-                  <div key={index} className="flex flex-col gap-3">
-                    {/* Icon hidden */}
-                    <h3 className="text-lg font-medium">{item.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      {item.text}
-                    </p>
-                  </div>
-                ))}
+            {/* Desktop/Tablet: 3-column grid */}
+            <div
+              className="hidden md:grid md:grid-cols-3 gap-12 items-start"
+              style={{ gridTemplateColumns: "45% 10% 45%" }}
+            >
+              {/* Left Column */}
+              <div className="relative">
+                <h1 className="text-3xl font-semibold leading-tight mb-8">
+                  Investment Focus
+                </h1>
+                <p className="text-gray-400 text-sm leading-relaxed mb-8">
+                  We Invest in
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
+                  {items.map((item, index) => (
+                    <div key={index} className="flex flex-col gap-3">
+                      <h3 className="text-lg font-medium">{item.title}</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        {item.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Middle Column - Vertical Separator */}
+              <div className="flex flex-col items-center justify-center">
+                <div
+                  className="w-px h-full bg-gray-700"
+                  style={{ minHeight: "450px" }}
+                />
+              </div>
+              {/* Right Column */}
+              <div className="relative md:mr-10">
+                <h1 className="text-3xl font-semibold leading-tight mb-8">
+                  Why Investors Trust Us
+                </h1>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
+                  {impactItems.map((item, index) => (
+                    <div key={index} className="flex flex-col gap-3">
+                      <h3 className="text-lg font-medium">{item.title}</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        {item.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
