@@ -95,9 +95,7 @@ export default function VentureFundPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
                 {items.map((item, index) => (
                   <div key={index} className="flex flex-col gap-3">
-                    <div className="text-xl">
-                      <FontAwesomeIcon icon={item.icon} />
-                    </div>
+                    {/* Icon hidden */}
                     <h3 className="text-lg font-medium">{item.title}</h3>
                     <p className="text-gray-400 text-sm leading-relaxed">
                       {item.text}
@@ -124,9 +122,7 @@ export default function VentureFundPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
                 {impactItems.map((item, index) => (
                   <div key={index} className="flex flex-col gap-3">
-                    <div className="text-xl">
-                      <FontAwesomeIcon icon={item.icon} />
-                    </div>
+                    {/* Icon hidden */}
                     <h3 className="text-lg font-medium">{item.title}</h3>
                     <p className="text-gray-400 text-sm leading-relaxed">
                       {item.text}

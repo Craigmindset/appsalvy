@@ -10,7 +10,6 @@ import {
   faGlobeAfrica,
   faMoneyBillWave,
 } from "@fortawesome/free-solid-svg-icons";
-import { ArrowRight } from "lucide-react";
 
 export default function Progress() {
   const items = [
@@ -66,7 +65,7 @@ export default function Progress() {
 
   return (
     <section className="w-full bg-[#111217] text-white py-20 px-6 md:px-20">
-      <div className="absolute inset-0  z-0" />
+      <div className="absolute inset-0 z-0" />
       <div className="relative z-10">
         <div
           className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-start"
@@ -81,9 +80,7 @@ export default function Progress() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
               {items.map((item, index) => (
                 <div key={index} className="flex flex-col gap-3">
-                  <div className="text-xl">
-                    <FontAwesomeIcon icon={item.icon} />
-                  </div>
+                  {/* Icon hidden */}
                   <h3 className="text-lg font-medium">{item.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
                     {item.text}
@@ -102,7 +99,7 @@ export default function Progress() {
           </div>
 
           {/* Right Column */}
-          <div className="relative md: mr-10">
+          <div className="relative md:mr-10">
             <h1 className="text-3xl md:text-3xl font-semibold leading-tight mb-8">
               Our 18 Years Impact
             </h1>
@@ -110,9 +107,7 @@ export default function Progress() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
               {impactItems.map((item, index) => (
                 <div key={index} className="flex flex-col gap-3">
-                  <div className="text-xl">
-                    <FontAwesomeIcon icon={item.icon} />
-                  </div>
+                  {/* Icon hidden */}
                   <h3 className="text-lg font-medium">{item.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
                     {item.text}
