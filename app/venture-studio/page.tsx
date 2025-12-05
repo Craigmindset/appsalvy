@@ -88,20 +88,12 @@ export default function VentureStudioPage() {
         </div>
       </section>
       {/* Custom Section After Hero */}
-      <section className="w-full py-6">
+      <section className="w-full py-6 bg-destructive dark:bg-foreground">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1 flex items-center justify-center bg-primary rounded-lg p-6">
-              <h1 className="text-xl sm:text-2xl font-bold text-primary-foreground text-center">
-                We don’t host cohorts.
-              </h1>
-            </div>
-            <div className="flex-1 flex items-center justify-center bg-destructive dark:bg-foreground rounded-lg p-6">
-              <h1 className="text-xl sm:text-2xl font-bold text-destructive-foreground text-center">
-                We co-build companies.
-              </h1>
-            </div>
-          </div>
+          <h1 className="text-xl sm:text-3xl font-bold text-center text-card">
+            We don’t host cohorts <span className="mx-2">|</span> We co-build
+            companies
+          </h1>
         </div>
       </section>
       {/* What We Do Section */}
