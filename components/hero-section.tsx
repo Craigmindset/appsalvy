@@ -72,16 +72,20 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 text-base font-semibold inline-flex items-center justify-center gap-3 min-w-[220px]">
-                <ArrowRight className="h-5 w-5" aria-hidden />
-                <span>Build with us</span>
-              </Button>
-              <Button
-                variant="outline"
-                className="rounded-full px-8 py-6 text-base font-semibold border-2 border-primary text-primary hover:bg-primary/10 bg-transparent inline-flex items-center justify-center gap-3 min-w-[220px]"
-              >
-                <span>Partner with us</span>
-              </Button>
+              <a href="/founder-form" className="inline-block min-w-[220px]">
+                <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 text-base font-semibold inline-flex items-center justify-center gap-3 w-full">
+                  <ArrowRight className="h-5 w-5" aria-hidden />
+                  <span>Build with us</span>
+                </Button>
+              </a>
+              <a href="/partner-form" className="inline-block min-w-[220px]">
+                <Button
+                  variant="outline"
+                  className="rounded-full px-8 py-6 text-base font-semibold border-2 border-primary text-primary hover:bg-primary/10 bg-transparent inline-flex items-center justify-center gap-3 w-full"
+                >
+                  <span>Partner with us</span>
+                </Button>
+              </a>
             </div>
           </div>
           {/* Right Column - Image Slider */}
