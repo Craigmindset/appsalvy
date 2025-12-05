@@ -1,4 +1,15 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChartLine,
+  faCog,
+  faChartBar,
+  faMobileAlt,
+  faRocket,
+  faBriefcase,
+  faGlobeAfrica,
+  faMoneyBillWave,
+} from "@fortawesome/free-solid-svg-icons";
 import { ArrowRight } from "lucide-react";
 
 export default function Progress() {
@@ -6,27 +17,27 @@ export default function Progress() {
     {
       title: "Phase 1: 2025 - 2030",
       text: "50 ventures • Studio/Fund operational • University groundwork • SEZ planning",
-      icon: "📈",
+      icon: faChartLine,
     },
     {
       title: "Phase 2: 2030 - 2035",
       text: "50 ventures • Salvy University Launch • Research Hubs • 10,000 trained founders",
-      icon: "⚙️",
+      icon: faCog,
     },
     {
       title: "Phase 3: 2035 - 2040",
       text: "SEZ Phase 1 • Studio in SEZ • 300 ventures",
-      icon: "📊",
+      icon: faChartBar,
     },
     {
       title: "Phase 4: 2040 - 2045",
       text: "SEZ Phase 2 • Industry clusters scaling • export expansion",
-      icon: "📱",
+      icon: faMobileAlt,
     },
     {
       title: "Phase 5: 2045 - 2050",
       text: "1,000 ventures • millions of jobs • continental impact",
-      icon: "📱",
+      icon: faMobileAlt,
     },
   ];
 
@@ -34,22 +45,22 @@ export default function Progress() {
     {
       title: "18+ Years of venture building",
       text: "Over 300 startups supported and scaled.",
-      icon: "🚀",
+      icon: faRocket,
     },
     {
       title: "6 High-Impact Sectors",
       text: "Thousands of jobs generated across Africa.",
-      icon: "💼",
+      icon: faBriefcase,
     },
     {
       title: "Portfolio presence across multiple African countries",
       text: "Impact in 20+ African countries.",
-      icon: "🌍",
+      icon: faGlobeAfrica,
     },
     {
       title: "Millions of Lives Impacted",
       text: "$50M+ invested in founders and ventures.",
-      icon: "💰",
+      icon: faMoneyBillWave,
     },
   ];
 
@@ -63,17 +74,17 @@ export default function Progress() {
         >
           {/* Left Column */}
           <div className="relative">
-            <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-8">
+            <h1 className="text-4xl md:text-3xl font-semibold leading-tight mb-8">
               Our 25+ years Mandate
             </h1>
-            <p className="uppercase text-sm tracking-wider text-gray-400 mb-4">
-              1,000 ventures. Millions of jobs. A transformed continent.
-            </p>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
               {items.map((item, index) => (
                 <div key={index} className="flex flex-col gap-3">
-                  <div className="text-4xl">{item.icon}</div>
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <div className="text-xl">
+                    <FontAwesomeIcon icon={item.icon} />
+                  </div>
+                  <h3 className="text-lg font-medium">{item.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
                     {item.text}
                   </p>
@@ -86,23 +97,23 @@ export default function Progress() {
           <div className="hidden md:flex flex-col items-center justify-center">
             <div
               className="w-px h-full bg-gray-700"
-              style={{ minHeight: "350px" }}
+              style={{ minHeight: "450px" }}
             />
           </div>
 
           {/* Right Column */}
           <div className="relative md: mr-10">
-            <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-8">
+            <h1 className="text-3xl md:text-3xl font-semibold leading-tight mb-8">
               Our 18 Years Impact
             </h1>
-            <p className="uppercase text-sm tracking-wider text-gray-400 mb-4">
-              1,000 ventures. Millions of jobs. A transformed continent.
-            </p>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
               {impactItems.map((item, index) => (
                 <div key={index} className="flex flex-col gap-3">
-                  <div className="text-4xl">{item.icon}</div>
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <div className="text-xl">
+                    <FontAwesomeIcon icon={item.icon} />
+                  </div>
+                  <h3 className="text-lg font-medium">{item.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
                     {item.text}
                   </p>
