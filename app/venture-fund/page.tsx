@@ -15,50 +15,50 @@ import {
 export default function VentureFundPage() {
   const items = [
     {
-      title: "Phase 1: 2025 - 2030",
+      title: "Studio-born ventures",
       text: "50 ventures • Studio/Fund operational • University groundwork • SEZ planning",
       icon: faChartLine,
     },
     {
-      title: "Phase 2: 2030 - 2035",
+      title: "early-stage and seed companies",
       text: "50 ventures • Salvy University Launch • Research Hubs • 10,000 trained founders",
       icon: faCog,
     },
     {
-      title: "Phase 3: 2035 - 2040",
+      title: "high-impact sectors",
       text: "SEZ Phase 1 • Studio in SEZ • 300 ventures",
       icon: faChartBar,
     },
     {
-      title: "Phase 4: 2040 - 2045",
+      title: "ventures with governance and product validation",
       text: "SEZ Phase 2 • Industry clusters scaling • export expansion",
-      icon: faMobileAlt,
-    },
-    {
-      title: "Phase 5: 2045 - 2050",
-      text: "1,000 ventures • millions of jobs • continental impact",
       icon: faMobileAlt,
     },
   ];
 
   const impactItems = [
     {
-      title: "18+ Years of venture building",
+      title: "De-risked, structured pipeline",
       text: "Over 300 startups supported and scaled.",
       icon: faRocket,
     },
     {
-      title: "6 High-Impact Sectors",
+      title: "Governance from day zero",
       text: "Thousands of jobs generated across Africa.",
       icon: faBriefcase,
     },
     {
-      title: "Portfolio presence across multiple African countries",
+      title: "Investment discipline",
       text: "Impact in 20+ African countries.",
       icon: faGlobeAfrica,
     },
     {
-      title: "Millions of Lives Impacted",
+      title: "Pan-African market intelligence",
+      text: "$50M+ invested in founders and ventures.",
+      icon: faMoneyBillWave,
+    },
+    {
+      title: "Long-term institutional vision",
       text: "$50M+ invested in founders and ventures.",
       icon: faMoneyBillWave,
     },
@@ -89,8 +89,11 @@ export default function VentureFundPage() {
             {/* Left Column */}
             <div className="relative">
               <h1 className="text-4xl md:text-3xl font-semibold leading-tight mb-8">
-                Our 25+ years Mandate
+                Investment Focus
               </h1>
+              <p className="text-gray-400 text-sm leading-relaxed mb-8">
+                We Invest in
+              </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
                 {items.map((item, index) => (
@@ -116,7 +119,7 @@ export default function VentureFundPage() {
             {/* Right Column */}
             <div className="relative md: mr-10">
               <h1 className="text-3xl md:text-3xl font-semibold leading-tight mb-8">
-                Our 18 Years Impact
+                Why Investors Trust Us
               </h1>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-8">
