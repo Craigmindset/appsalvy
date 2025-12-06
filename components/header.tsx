@@ -127,7 +127,7 @@ export function Header() {
             className="absolute inset-y-0 left-0 w-7/10 bg-background shadow-lg overflow-y-auto"
             style={{ fontFamily: "'Geist', 'Geist Fallback', sans-serif" }}
           >
-            <div className="p-4 pt-24 space-y-2">
+            <div className="p-4 pt-24 space-y-0.5">
               {NAV_LINKS.map((link) => {
                 const isActive = pathname === link.href;
                 return (

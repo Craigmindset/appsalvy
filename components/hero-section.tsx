@@ -62,14 +62,14 @@ export function HeroSection() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground font-georgia hero-building whitespace-normal break-words">
                 Building Africa's
               </h1>
-              <h3 className="text-xl sm:text-3xl lg:text-4xl font-medium italic text-primary whitespace-nowrap">
+              <h3 className="text-xl sm:text-3xl lg:text-4xl text-center md:text-left  font-medium italic text-primary whitespace-nowrap">
                 Next <span className="italic">Generation</span> of Companies
               </h3>
               {/* Rotating word slider */}
-              <div className="mt-1 lg:-mt-1 h-10">
+              <div className="mt-1 lg:-mt-1 h-10 text-center md:text-left">
                 <span
                   aria-live="polite"
-                  className={`text-2xl sm:text-3xl lg:text-5xl font-semibold tracking-tight transition-hero-color font-georgia italic text-[#8B0000] dark:text-white transition-opacity duration-500 ${
+                  className={`text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight transition-hero-color font-georgia italic text-[#8B0000] dark:text-white transition-opacity duration-500 ${
                     wordVisible ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -78,7 +78,7 @@ export function HeroSection() {
               </div>
             </div>
 
-            <p className="text-lg sm:text-xl text-foreground/70 leading-snug max-w-md">
+            <p className=" md:mx-0 text-lg sm:text-lg text-foreground/70 leading-snug w-full sm:max-w-md text-center md:text-left  break-words ">
               Salvy VentureCorp is a Venture Architecture Studio designing,
               building, and scaling high-impact African ventures with structure,
               discipline, capital, and talent.

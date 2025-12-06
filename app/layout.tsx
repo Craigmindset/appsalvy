@@ -1,29 +1,28 @@
-import type React from "react"
-import type { Metadata, Viewport } from "next"
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { ChatWidget } from "@/components/chat-widget"
+import type React from "react";
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ChatWidget } from "@/components/chat-widget";
 
 export const metadata: Metadata = {
   title: "Salvy Venture - Building Africa's Next Generation of Companies",
   description:
     "Salvy VentureCorp is a Venture Architecture Studio designing, building, and scaling high-impact African ventures with structure, discipline, capital, and talent.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/salvy-logo.png",
   },
-    generator: 'v0.app'
-}
+};
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -34,5 +33,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
