@@ -189,7 +189,7 @@ export default function FutureInitiativesPage() {
       {/* Why We Are Sharing These Future Plans Now Section */}
       <section className="w-full py-16 px-4 bg-background flex flex-col items-center">
         <div className="max-w-3xl w-full mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+          <h2 className="text-2xl sm:text-2xl font-bold text-foreground mb-6">
             WHY WE ARE SHARING THESE FUTURE PLANS NOW
           </h2>
           <p className="text-base text-foreground/80 mb-6">
