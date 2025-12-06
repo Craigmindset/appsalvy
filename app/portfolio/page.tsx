@@ -28,7 +28,7 @@ const PORTFOLIO_ITEMS: Portfolio[] = [
     category: "fintech",
     status: "Scaling",
     fundingRound: "Series A",
-    image: "/fintech-dashboard.png",
+    image: "/brands/syscomptec.jpg",
     founders: ["Sarah Okafor", "Chisom Uche"],
     sector: "Financial Technology",
   },
@@ -39,7 +39,7 @@ const PORTFOLIO_ITEMS: Portfolio[] = [
     category: "agritech",
     status: "Active",
     fundingRound: "Seed",
-    image: "/agricultural-technology.png",
+    image: "/brands/outdoors logo.png",
     founders: ["Kwame Asante", "Zainab Hassan"],
     sector: "Agriculture",
   },
@@ -51,7 +51,7 @@ const PORTFOLIO_ITEMS: Portfolio[] = [
     category: "healthtech",
     status: "Scaling",
     fundingRound: "Series A",
-    image: "/healthcare-technology-integration.png",
+    image: "/brands/spark.jpg",
     founders: ["Dr. Amara Nwosu"],
     sector: "Healthcare",
   },
@@ -63,7 +63,7 @@ const PORTFOLIO_ITEMS: Portfolio[] = [
     category: "edtech",
     status: "Active",
     fundingRound: "Seed",
-    image: "/images/wakabanki.png",
+    image: "/brands/Wakabanki logo.png",
     founders: ["Kofi Mensah", "Ama Boateng"],
     sector: "Education",
   },
@@ -74,21 +74,75 @@ const PORTFOLIO_ITEMS: Portfolio[] = [
     category: "logistics",
     status: "Scaling",
     fundingRound: "Series A",
-    image: "/images/artisanOga.png",
+    image: "/brands/Artisan logo.png",
     founders: ["Lerato Mokoena", "Thabo Ndlela"],
     sector: "Logistics",
   },
   {
     id: 6,
     name: "Kitovu",
-    description:
-      " Transforming agriculture and food systems across multiple countries.",
+    description: "",
     category: "hrtech",
     status: "Active",
     fundingRound: "Seed",
-    image: " /images/Kitovu.png",
+    image: "/brands/kitovu.jpg",
     founders: ["Zainab Ibrahim"],
     sector: "Human Resources",
+  },
+  {
+    id: 7,
+    name: "Pess Printing",
+    description: "",
+    category: "printing",
+    status: "Active",
+    fundingRound: "Seed",
+    image: "/brands/pess printing logo.png",
+    founders: [],
+    sector: "Printing",
+  },
+  {
+    id: 8,
+    name: "Saitek",
+    description: "",
+    category: "technology",
+    status: "Active",
+    fundingRound: "Seed",
+    image: "/brands/Saitek logo.png",
+    founders: [],
+    sector: "Technology",
+  },
+  {
+    id: 9,
+    name: "Frndix",
+    description: "",
+    category: "services",
+    status: "Active",
+    fundingRound: "Seed",
+    image: "/brands/frndix logo.png",
+    founders: [],
+    sector: "Services",
+  },
+  {
+    id: 10,
+    name: "CityFibre",
+    description: "",
+    category: "infrastructure",
+    status: "Active",
+    fundingRound: "Seed",
+    image: "/brands/cityfibre logo.png",
+    founders: [],
+    sector: "Infrastructure",
+  },
+  {
+    id: 11,
+    name: "PDMA",
+    description: "",
+    category: "association",
+    status: "Active",
+    fundingRound: "Seed",
+    image: "/brands/PDMA LOGO.png",
+    founders: [],
+    sector: "Association",
   },
 ];
 
@@ -137,46 +191,29 @@ export default function PortfolioPage() {
       {/* Portfolio Grid */}
       <section className="w-full py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {filteredPortfolio.map((venture) => (
-              <Card
+              <div
                 key={venture.id}
-                className="overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col"
+                className="flex flex-col items-center w-full"
               >
-                {/* Image */}
-                <div
-                  className="h-48 bg-secondary"
-                  style={{
-                    backgroundImage: `url('${venture.image}')`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                />
-
-                {/* Content */}
-                <div className="p-6 flex-1 flex flex-col gap-4">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground">
-                        {venture.name}
-                      </h3>
-                      <p className="text-sm text-foreground/60 mt-1">
-                        {venture.sector}
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-foreground/70 line-clamp-2">
-                    {venture.description}
-                  </p>
-
-                  {/* Founders */}
-                  {/* ...existing code... */}
-
-                  {/* Funding Round */}
-                  {/* ...existing code... */}
-                </div>
-              </Card>
+                {/* Logo Card */}
+                <Card className="overflow-hidden hover:shadow-lg transition-shadow w-full h-20 md:h-24 flex items-center justify-center bg-white rounded-xl">
+                  <div
+                    className="w-full h-full flex items-center justify-center"
+                    style={{
+                      backgroundImage: `url('${venture.image}')`,
+                      backgroundSize: "contain",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                    }}
+                  />
+                </Card>
+                {/* Venture Name Outside Card */}
+                <h3 className="text-lg font-bold text-foreground mt-2 text-center">
+                  {venture.name}
+                </h3>
+              </div>
             ))}
           </div>
 
