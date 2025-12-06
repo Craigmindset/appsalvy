@@ -54,7 +54,7 @@ export default function AboutPage() {
     {
       name: "Dcn. Chris Iyovwaye",
       role: "Chairman/CEO, Wellmann Group",
-      image: "/sample.jpg",
+      image: "/chris-iyovwaye.jpg",
     },
     {
       name: "Remi Olumuyiwa",
