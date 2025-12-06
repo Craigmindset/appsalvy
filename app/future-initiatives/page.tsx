@@ -149,34 +149,120 @@ export default function FutureInitiativesPage() {
                   <li>Creative Teams</li>
                   <li>Agribusinesses</li>
                   <li>Manufacturers</li>
-                  <li></li>
+                  <li>Students</li>
+                  <li>and Investors</li>
                 </ul>
               </div>
               <p className="text-base text-foreground/70 mb-6 text-center md:text-left">
-                The University will anchor the talent engine behind our 25-year
-                roadmap.
+                co-exist in a shared environment built for efficiency,
+                production, innovation, and scale.
               </p>
+
               <h3 className="text-lg font-semibold text-foreground mb-2 text-center md:text-left">
-                Current Status
-              </h3>
-              <p className="text-base text-foreground/70 mb-6 text-center md:text-left">
-                Actively in concept development, partnership discussions, and
-                blueprint refinement.
-              </p>
-              <h3 className="text-lg font-semibold text-foreground mb-2 text-center md:text-left">
-                Expected functions:
+                It will integrate:
               </h3>
               <ul className="list-disc pl-5 text-base text-foreground mb-4">
-                <li>Enterprise-focused academic programs</li>
-                <li>Research & innovation hubs</li>
-                <li>Founder residencies</li>
-                <li>Talent pipeline for Studio ventures</li>
-                <li>Integration with the future SEZ ecosystem</li>
+                <li>Enterprise zones</li>
+                <li>Manufacturing clusters</li>
+                <li>Creative districts</li>
+                <li>Logistics & agricultural hubs</li>
+                <li>The Salvy University campus</li>
+                <li>Capital & Financial Services</li>
+                <li>Residential and Community Facilities</li>
               </ul>
+              <p className="text-base text-foreground/70 mb-6 text-center md:text-left">
+                <span className="font-bold text-foreground">
+                  Current status:
+                </span>{" "}
+                Under consultation with state partners, land assessment,
+                regulatory alignment, and long-term planning.
+              </p>
+              <p className="text-base text-foreground/70 mb-6 text-center md:text-left">
+                The SEZ is designed as the physical culmination of our
+                venture-building mission — a home for our best companies to
+                scale and become global competitors.
+              </p>
             </div>
           </div>
         </section>
       </div>
+      {/* Why We Are Sharing These Future Plans Now Section */}
+      <section className="w-full py-16 px-4 bg-background flex flex-col items-center">
+        <div className="max-w-3xl w-full mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            WHY WE ARE SHARING THESE FUTURE PLANS NOW
+          </h2>
+          <p className="text-base text-foreground/80 mb-6">
+            Because these initiatives shape the long-term direction of Salvy
+            VentureCorp.
+            <br />
+            They show partners, investors, and founders that our vision is not
+            short-term — it is generational. However, we are intentional about
+            communicating them carefully:
+          </p>
+          <ul className="list-disc pl-6 text-base text-foreground/80 mb-6 text-left inline-block">
+            <li>They are not active programs yet</li>
+            <li>
+              No admissions, sign-ups, or operating details will be advertised
+            </li>
+            <li>We only share high-level vision and future direction</li>
+          </ul>
+          <p className="text-base text-foreground/80 mb-10">
+            This protects our credibility while allowing strategic partners to
+            begin engaging early.
+          </p>
+        </div>
+
+        {/* Invitation to Partners Block */}
+        <div className="w-full max-w-6xl mx-auto rounded-xl bg-black py-10 px-6 mb-8 flex flex-col items-center">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            AN INVITATION TO PARTNERS
+          </h2>
+          <p className="text-base text-white font-semibold mb-4">
+            We welcome early conversations with:
+          </p>
+          <ul className="list-none grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+            <li className="flex items-center gap-2 text-white">
+              <span className="inline-block w-2 h-2 bg-red-600 rounded-full"></span>
+              governments
+            </li>
+            <li className="flex items-center gap-2 text-white">
+              <span className="inline-block w-2 h-2 bg-red-600 rounded-full"></span>
+              investors
+            </li>
+            <li className="flex items-center gap-2 text-white">
+              <span className="inline-block w-2 h-2 bg-red-600 rounded-full"></span>
+              development partners
+            </li>
+            <li className="flex items-center gap-2 text-white">
+              <span className="inline-block w-2 h-2 bg-red-600 rounded-full"></span>
+              institutions
+            </li>
+            <li className="flex items-center gap-2 text-white">
+              <span className="inline-block w-2 h-2 bg-red-600 rounded-full"></span>
+              foundations
+            </li>
+            <li className="flex items-center gap-2 text-white">
+              <span className="inline-block w-2 h-2 bg-red-600 rounded-full"></span>
+              corporate sponsors
+            </li>
+            <li className="flex items-center gap-2 text-white">
+              <span className="inline-block w-2 h-2 bg-red-600 rounded-full"></span>
+              academic collaborators
+            </li>
+          </ul>
+        </div>
+
+        {/* Call to Action Block */}
+        <div className="w-full max-w-3xl mx-auto rounded-xl bg-destructive py-10 px-6 flex flex-col items-center">
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">
+            who want to shape Africa’s enterprise future alongside us.
+          </h2>
+          <button className="bg-white text-destructive font-bold px-6 py-3 rounded-full shadow hover:bg-destructive hover:text-white border-2 border-white transition-colors">
+            Lets Start a Partnership
+          </button>
+        </div>
+      </section>
       <Footer />
     </main>
   );
