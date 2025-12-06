@@ -5,7 +5,7 @@ export default function PartnersEcosystemPage() {
   return (
     <main className="min-h-screen bg-background">
       <Header />
-      <section className="w-full py-16 md:py-24">
+      <section className="w-full py-16 md:py-18">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Who We Work With
@@ -67,6 +67,46 @@ export default function PartnersEcosystemPage() {
                 Accelerating new ideas, technology, and entrepreneurial
                 ecosystems.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/*Partner Benefits*/}
+      <section className="w-full py-16 md:py-14 bg-blue-50 dark:bg-[#8B0000]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-10">
+            Partner Benefits
+          </h1>
+
+          {/* Partner Benefits Section */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-left max-w-6xl mx-auto mb-12">
+            <div className="bg-white dark:bg-[#18181b] rounded-xl shadow p-6 flex flex-col items-center text-center md:min-w-[220px] md:max-w-[260px]">
+              <h3 className="text-lg font-bold text-red-700 dark:text-foreground mb-2">
+                Structured pipeline
+              </h3>
+              <p className="text-foreground/80 text-base">Guided growth.</p>
+            </div>
+            <div className="bg-white dark:bg-[#18181b] rounded-xl shadow p-6 flex flex-col items-center text-center md:min-w-[220px] md:max-w-[260px]">
+              <h3 className="text-lg font-bold text-red-700 dark:text-foreground mb-2 text-center">
+                Governance-backed ventures
+              </h3>
+              <p className="text-foreground/80 text-base">
+                Transparent ventures.
+              </p>
+            </div>
+            <div className="bg-white dark:bg-[#18181b] rounded-xl shadow p-6 flex flex-col items-center text-center md:min-w-[220px] md:max-w-[260px]">
+              <h3 className="text-lg font-bold text-red-700 dark:text-foreground mb-2 text-center">
+                Co-building opportunities
+              </h3>
+              <p className="text-foreground/80 text-base">
+                Collaborative innovation.
+              </p>
+            </div>
+            <div className="bg-white dark:bg-[#18181b] rounded-xl shadow p-6 flex flex-col items-center text-center md:min-w-[220px] md:max-w-[260px]">
+              <h3 className="text-lg font-bold text-red-700 dark:text-foreground mb-2">
+                Measurable Impact
+              </h3>
+              <p className="text-foreground/80 text-base">Visible impact.</p>
             </div>
           </div>
         </div>

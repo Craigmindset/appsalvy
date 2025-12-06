@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 
 // Brand images referenced from `public/brands/`
 const brandLogos = [
-  { name: "Kitovu", src: "/brands/port1.png" },
+  { name: "Spark", src: "/brands/spark.jpg" },
   { name: "brand 2", src: "/brands/port2.png" },
   { name: "Mara", src: "/brands/port3.png" },
   { name: "brand 4", src: "/brands/port4.png" },

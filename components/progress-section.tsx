@@ -53,7 +53,7 @@ export default function Progress() {
     },
     {
       title: "Portfolio presence across multiple African countries",
-      text: "Impact in 20+ African countries.",
+      text: "Impact in 4+ African countries.",
       icon: faGlobeAfrica,
     },
     {
