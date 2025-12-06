@@ -5,11 +5,16 @@ import React, { useEffect, useRef } from "react";
 // Brand images referenced from `public/brands/`
 const brandLogos = [
   { name: "Spark", src: "/brands/spark.jpg" },
-  { name: "brand 2", src: "/brands/port2.png" },
-  { name: "Mara", src: "/brands/port3.png" },
-  { name: "brand 4", src: "/brands/port4.png" },
-  { name: "brand 5", src: "/brands/port5.png" },
-  { name: "brand 6", src: "/brands/port6.png" },
+  { name: "syscomptech", src: "/brands/syscomptec.jpg" },
+  { name: "ArtisanOga", src: "/brands/Artisan logo.png" },
+  { name: "Saitek", src: "/brands/Saitek logo.png" },
+  { name: "PDMA", src: "/brands/PDMA LOGO.png" },
+  { name: "Outdoors.ng", src: "/brands/outdoors logo.png" },
+  { name: "WakaBanki", src: "/brands/Wakabanki logo.png" },
+  { name: "Kitovu", src: "/brands/kitovu.jpg" },
+  { name: "CityFibre", src: "/brands/cityfibre logo.png" },
+  { name: "pess", src: "/brands/pess printing logo.png" },
+  { name: "frndix", src: "/brands/frndix logo.png" },
 ];
 
 export function CarouselSection() {
