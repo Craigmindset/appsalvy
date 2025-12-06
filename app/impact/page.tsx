@@ -7,7 +7,7 @@ export default function ImpactPage() {
       <Header />
       <section className="w-full py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Our Impact Model
           </h1>
           <p className="text-lg mb-8">

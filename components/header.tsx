@@ -16,7 +16,7 @@ const NAV_LINKS = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/venture-fund", label: "Venture Fund" },
   { href: "/impact", label: "Impact" },
-  { href: "/", label: "Future Initiatives" },
+  { href: "/future-initiatives", label: "Future Initiatives" },
   { href: "/", label: "Partners & Ecosystem" },
   { href: "/contact", label: "Contact" },
   { href: "/", label: "Careers" },
