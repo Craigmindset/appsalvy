@@ -160,7 +160,7 @@ export default function VentureFundPage() {
                 />
               </div>
               {/* Right Column */}
-              <div className="relative md:mr-10">
+              <div className="relative md:ml-0 md:mr-12">
                 <h1 className="text-3xl font-semibold leading-tight mb-8">
                   Why Investors Trust Us
                 </h1>
