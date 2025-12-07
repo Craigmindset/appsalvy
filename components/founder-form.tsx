@@ -87,7 +87,7 @@ export function FounderForm() {
         <input
           type="text"
           placeholder="Business Name"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
           required
           value={businessName}
           onChange={(e) => setBusinessName(e.target.value)}
@@ -99,7 +99,7 @@ export function FounderForm() {
         <div>
           <label className="block mb-1">Is the Business Registered?</label>
           <select
-            className="w-full border rounded p-2"
+            className="w-full border border-green-900 rounded p-2"
             value={isRegistered}
             onChange={(e) => setIsRegistered(e.target.value)}
           >
@@ -116,7 +116,7 @@ export function FounderForm() {
             <input
               type="date"
               placeholder="Business Registration Date"
-              className="w-full border rounded p-2"
+              className="w-full border border-green-900 rounded p-2"
               required
             />
           </>
@@ -125,7 +125,7 @@ export function FounderForm() {
         <input
           type="text"
           placeholder="Business Number (BN/RC/LLC)"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
         />
         <label className="block mb-1">
           Website <span className="text-red-600">*</span>
@@ -133,7 +133,7 @@ export function FounderForm() {
         <input
           type="url"
           placeholder="https://yourbusiness.com"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
           required
           value={website}
           onChange={(e) => setWebsite(e.target.value)}
@@ -155,7 +155,7 @@ export function FounderForm() {
         <input
           type="text"
           placeholder="First Name"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
           required
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
@@ -170,7 +170,7 @@ export function FounderForm() {
         <input
           type="text"
           placeholder="Last Name"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
           required
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
@@ -185,7 +185,7 @@ export function FounderForm() {
         <input
           type="text"
           placeholder="Position"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
           required
           value={position}
           onChange={(e) => setPosition(e.target.value)}
@@ -200,7 +200,7 @@ export function FounderForm() {
         <input
           type="email"
           placeholder="Email"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -217,7 +217,7 @@ export function FounderForm() {
         <input
           type="tel"
           placeholder="Phone Number"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
           required
           value={phone}
           onChange={(e) => {
@@ -237,7 +237,7 @@ export function FounderForm() {
         <input
           type="text"
           placeholder="linkedin.com/your-profile"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
           required
           value={linkedin}
           onChange={(e) => setLinkedin(e.target.value)}
@@ -259,7 +259,7 @@ export function FounderForm() {
             maxLength={200}
             value={businessIdeology}
             onChange={(e) => setBusinessIdeology(e.target.value)}
-            className="w-full border rounded p-2"
+            className="w-full border border-green-900 rounded p-2"
             placeholder="Business Ideology (max 200 characters)"
           />
           <div className="text-right text-xs text-gray-500">
@@ -269,7 +269,7 @@ export function FounderForm() {
         <div>
           <label className="block mb-1">Have you been Funded before?</label>
           <select
-            className="w-full border rounded p-2"
+            className="w-full border border-green-900 rounded p-2"
             value={fundedBefore}
             onChange={(e) => setFundedBefore(e.target.value)}
           >
@@ -284,13 +284,13 @@ export function FounderForm() {
             <input
               type="text"
               placeholder="Fund Provider"
-              className="w-full border rounded p-2"
+              className="w-full border border-green-900 rounded p-2"
             />
             <label className="block mb-1">Amount ($)</label>
             <input
               type="number"
               placeholder="Amount ($)"
-              className="w-full border rounded p-2"
+              className="w-full border border-green-900 rounded p-2"
             />
             <label className="block mb-1">Fund Stage</label>
             <select className="w-full border rounded p-2">
@@ -309,7 +309,7 @@ export function FounderForm() {
       <h3 className="text-lg font-bold mb-2">Team</h3>
       <div className="space-y-2">
         {team.map((member, idx) => (
-          <div key={idx} className="flex gap-2 mb-2">
+          <div key={idx} className="flex flex-col sm:flex-row gap-2 mb-2">
             <label className="block mb-1 flex-1">
               Team Name <span className="text-red-600">*</span>
             </label>
@@ -322,11 +322,11 @@ export function FounderForm() {
           </div>
         ))}
         {team.map((member, idx) => (
-          <div key={idx} className="flex gap-2 mb-2">
+          <div key={idx} className="flex flex-col sm:flex-row gap-2 mb-2">
             <input
               type="text"
               placeholder="Team Name"
-              className="flex-1 border rounded p-2"
+              className="flex-1 border border-green-900 rounded p-2"
               required
               value={member.name}
               onChange={(e) => handleTeamChange(idx, "name", e.target.value)}
@@ -334,7 +334,7 @@ export function FounderForm() {
             <input
               type="email"
               placeholder="Email"
-              className="flex-1 border rounded p-2"
+              className="flex-1 border border-green-900 rounded p-2"
               required
               value={member.email}
               onChange={(e) => handleTeamChange(idx, "email", e.target.value)}
@@ -342,7 +342,7 @@ export function FounderForm() {
             <input
               type="text"
               placeholder="Position"
-              className="flex-1 border rounded p-2"
+              className="flex-1 border border-green-900 rounded p-2"
               required
               value={member.position}
               onChange={(e) =>
@@ -368,14 +368,14 @@ export function FounderForm() {
         </label>
         <input
           type="file"
-          className="w-full border rounded p-2"
+          className="w-full border border-green-900 rounded p-2"
           required
           onChange={(e) => setBusinessPitch(e.target.files?.[0] || null)}
         />
         <label className="block">Track Records</label>
         <input
           type="file"
-          className="w-full border rounded p-2"
+          className="w-full border-2 border-green-900 rounded p-2"
           onChange={(e) => setTrackRecords(e.target.files?.[0] || null)}
         />
       </div>

@@ -19,7 +19,6 @@ const NAV_LINKS = [
   { href: "/future-initiatives", label: "Future Initiatives" },
   { href: "/partners-ecosystem", label: "Partners & Ecosystem" },
   { href: "/contact", label: "Contact" },
-  { href: "/", label: "Careers" },
 ];
 
 export function Header() {
