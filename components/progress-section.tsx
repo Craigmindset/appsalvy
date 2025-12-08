@@ -58,7 +58,7 @@ export default function Progress() {
     },
     {
       title: "Millions of Lives Impacted",
-      text: "$50M+ invested in founders and ventures.",
+      text: "Invested in early stage founders and ventures.",
       icon: faMoneyBillWave,
     },
   ];
