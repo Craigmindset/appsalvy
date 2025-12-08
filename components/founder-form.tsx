@@ -45,7 +45,6 @@ export function FounderForm() {
     isPhoneValid &&
     isWebsiteValid &&
     isLinkedinValid &&
-    businessPitch &&
     attest &&
     team.every(
       (member) =>
@@ -73,12 +72,18 @@ export function FounderForm() {
 
   // Helper to upload a file to Supabase Storage and return the public URL
   async function uploadFile(file: File, folder: string) {
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2)}.${fileExt}`;
-    const { data, error } = await supabase.storage.from('founder-docs').upload(fileName, file, { upsert: false });
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${folder}/${Date.now()}-${Math.random()
+      .toString(36)
+      .slice(2)}.${fileExt}`;
+    const { data, error } = await supabase.storage
+      .from("founder-docs")
+      .upload(fileName, file, { upsert: false });
     if (error) throw error;
     // Get public URL
-    const { data: publicUrlData } = supabase.storage.from('founder-docs').getPublicUrl(fileName);
+    const { data: publicUrlData } = supabase.storage
+      .from("founder-docs")
+      .getPublicUrl(fileName);
     return publicUrlData.publicUrl;
   }
 
@@ -91,17 +96,17 @@ export function FounderForm() {
       let businessPitchUrl = null;
       let trackRecordsUrl = null;
       if (businessPitch) {
-        businessPitchUrl = await uploadFile(businessPitch, 'business-pitch');
+        businessPitchUrl = await uploadFile(businessPitch, "business-pitch");
       }
       if (trackRecords) {
-        trackRecordsUrl = await uploadFile(trackRecords, 'track-records');
+        trackRecordsUrl = await uploadFile(trackRecords, "track-records");
       }
-      const { error } = await supabase.from('founder_applications').insert([
+      const { error } = await supabase.from("founder_applications").insert([
         {
           business_name: businessName,
-          is_registered: isRegistered === 'yes',
-          registration_date: isRegistered === 'yes' ? undefined : null, // You can add registration date if you collect it
-          business_number: '', // Add if you collect it
+          is_registered: isRegistered === "yes",
+          registration_date: isRegistered === "yes" ? undefined : null, // You can add registration date if you collect it
+          business_number: "", // Add if you collect it
           website,
           first_name: firstName,
           last_name: lastName,
@@ -110,10 +115,10 @@ export function FounderForm() {
           phone,
           linkedin,
           business_ideology: businessIdeology,
-          funded_before: fundedBefore === 'yes',
-          fund_provider: '', // Add if you collect it
+          funded_before: fundedBefore === "yes",
+          fund_provider: "", // Add if you collect it
           fund_amount: null, // Add if you collect it
-          fund_stage: '', // Add if you collect it
+          fund_stage: "", // Add if you collect it
           team: team,
           business_pitch_url: businessPitchUrl,
           track_records_url: trackRecordsUrl,
@@ -124,14 +129,17 @@ export function FounderForm() {
       setSubmitSuccess(true);
       // Optionally reset form here
     } catch (err: any) {
-      setSubmitError(err.message || 'Submission failed');
+      setSubmitError(err.message || "Submission failed");
     } finally {
       setSubmitting(false);
     }
   }
 
   return (
-    <form className="max-w-lg mx-auto p-4 space-y-8 relative" onSubmit={handleSubmit}>
+    <form
+      className="max-w-lg mx-auto p-4 space-y-8 relative"
+      onSubmit={handleSubmit}
+    >
       {/* Close Icon */}
       <button
         type="button"
@@ -428,13 +436,10 @@ export function FounderForm() {
       {/* Business Document */}
       <h3 className="text-lg font-bold mb-2">Business Document</h3>
       <div className="space-y-2">
-        <label className="block">
-          Business Pitch <span className="text-red-600">*</span>
-        </label>
+        <label className="block">Business Pitch</label>
         <input
           type="file"
           className="w-full border border-green-900 rounded p-2"
-          required
           onChange={(e) => setBusinessPitch(e.target.files?.[0] || null)}
         />
         <label className="block">Track Records</label>
@@ -483,8 +488,14 @@ export function FounderForm() {
           </div>
         </div>
       )}
-      {submitError && <div className="text-red-600 text-sm mb-2">{submitError}</div>}
-      {submitSuccess && <div className="text-green-700 text-sm mb-2">Application submitted successfully!</div>}
+      {submitError && (
+        <div className="text-red-600 text-sm mb-2">{submitError}</div>
+      )}
+      {submitSuccess && (
+        <div className="text-green-700 text-sm mb-2">
+          Application submitted successfully!
+        </div>
+      )}
       <button
         type="submit"
         className={`w-full bg-red-600 text-white rounded-full py-3 font-bold mt-2 transition-opacity ${
@@ -492,7 +503,7 @@ export function FounderForm() {
         }`}
         disabled={!isFormValid || submitting}
       >
-        {submitting ? 'Submitting...' : 'Submit'}
+        {submitting ? "Submitting..." : "Submit"}
       </button>
     </form>
   );
