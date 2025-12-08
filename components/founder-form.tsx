@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { Plus, X, Info } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Attestation } from "@/components/attestation";
@@ -65,8 +66,72 @@ export function FounderForm() {
     setTeam(updated);
   };
 
+  // Submission state
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  // Helper to upload a file to Supabase Storage and return the public URL
+  async function uploadFile(file: File, folder: string) {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2)}.${fileExt}`;
+    const { data, error } = await supabase.storage.from('founder-docs').upload(fileName, file, { upsert: false });
+    if (error) throw error;
+    // Get public URL
+    const { data: publicUrlData } = supabase.storage.from('founder-docs').getPublicUrl(fileName);
+    return publicUrlData.publicUrl;
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitting(true);
+    setSubmitError(null);
+    setSubmitSuccess(false);
+    try {
+      let businessPitchUrl = null;
+      let trackRecordsUrl = null;
+      if (businessPitch) {
+        businessPitchUrl = await uploadFile(businessPitch, 'business-pitch');
+      }
+      if (trackRecords) {
+        trackRecordsUrl = await uploadFile(trackRecords, 'track-records');
+      }
+      const { error } = await supabase.from('founder_applications').insert([
+        {
+          business_name: businessName,
+          is_registered: isRegistered === 'yes',
+          registration_date: isRegistered === 'yes' ? undefined : null, // You can add registration date if you collect it
+          business_number: '', // Add if you collect it
+          website,
+          first_name: firstName,
+          last_name: lastName,
+          position,
+          email,
+          phone,
+          linkedin,
+          business_ideology: businessIdeology,
+          funded_before: fundedBefore === 'yes',
+          fund_provider: '', // Add if you collect it
+          fund_amount: null, // Add if you collect it
+          fund_stage: '', // Add if you collect it
+          team: team,
+          business_pitch_url: businessPitchUrl,
+          track_records_url: trackRecordsUrl,
+          attest,
+        },
+      ]);
+      if (error) throw error;
+      setSubmitSuccess(true);
+      // Optionally reset form here
+    } catch (err: any) {
+      setSubmitError(err.message || 'Submission failed');
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
-    <form className="max-w-lg mx-auto p-4 space-y-8 relative">
+    <form className="max-w-lg mx-auto p-4 space-y-8 relative" onSubmit={handleSubmit}>
       {/* Close Icon */}
       <button
         type="button"
@@ -418,14 +483,16 @@ export function FounderForm() {
           </div>
         </div>
       )}
+      {submitError && <div className="text-red-600 text-sm mb-2">{submitError}</div>}
+      {submitSuccess && <div className="text-green-700 text-sm mb-2">Application submitted successfully!</div>}
       <button
         type="submit"
         className={`w-full bg-red-600 text-white rounded-full py-3 font-bold mt-2 transition-opacity ${
-          !isFormValid ? "opacity-50 cursor-not-allowed" : ""
+          !isFormValid || submitting ? "opacity-50 cursor-not-allowed" : ""
         }`}
-        disabled={!isFormValid}
+        disabled={!isFormValid || submitting}
       >
-        Submit
+        {submitting ? 'Submitting...' : 'Submit'}
       </button>
     </form>
   );

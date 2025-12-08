@@ -61,6 +61,16 @@ export default function AboutPage() {
       role: "Legal Adviser/Company Secretary",
       image: "/Emmanuella.png",
     },
+    {
+      name: "Remi Olumuyiwa",
+      role: "Director",
+      image: "/remi.jpg",
+    },
+    {
+      name: "Onyekachi Salvation",
+      role: "Director",
+      image: "/kachi.jpg",
+    },
   ];
 
   return (
