@@ -48,18 +48,18 @@ export default function AboutPage() {
     },
     {
       name: "Amb. Joe Keshi ",
-      role: "Chairman, UBA Plc",
-      image: "/kachi2.jpg",
+      role: "Director",
+      image: "/keshi.jpg",
     },
     {
       name: "Dcn. Chris Iyovwaye",
-      role: "Chairman/CEO, Wellmann Group",
+      role: "Director",
       image: "/Chris.jpg",
     },
     {
-      name: "Remi Olumuyiwa",
-      role: "Managing Director, First Trico",
-      image: "/sample.jpg",
+      name: "Emmanuella Uyaelumuo",
+      role: "Legal Adviser/Company Secretary",
+      image: "/Emmanuella.png",
     },
   ];
 
