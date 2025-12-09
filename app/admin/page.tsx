@@ -110,7 +110,7 @@ export default function AdminLoginPage() {
               </label>
               <Input
                 type="email"
-                placeholder="admin@salvyventure.com"
+                placeholder="enter email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full"
