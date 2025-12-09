@@ -27,24 +27,24 @@ const ADMIN_NAV_ITEMS = [
     icon: "📝",
     requiredRole: "admin" as const,
   },
-  {
-    label: "Investors Application",
-    href: "/admin/investors-application",
-    icon: "💼",
-    requiredRole: "admin" as const,
-  },
+  // {
+  //   label: "Investors Application",
+  //   href: "/admin/investors-application",
+  //   icon: "💼",
+  //   requiredRole: "admin" as const,
+  // },
   {
     label: "Partners Application",
     href: "/admin/partners-application",
     icon: "🤝",
     requiredRole: "admin" as const,
   },
-  {
-    label: "Career Management",
-    href: "/admin/career-management",
-    icon: "💼",
-    requiredRole: "admin" as const,
-  },
+  // {
+  //   label: "Career Management",
+  //   href: "/admin/career-management",
+  //   icon: "💼",
+  //   requiredRole: "admin" as const,
+  // },
 ];
 
 export function AdminLayout({ children }: { children: React.ReactNode }) {

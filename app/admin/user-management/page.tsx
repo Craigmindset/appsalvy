@@ -7,6 +7,7 @@ import { Search, Trash2, Edit2, X, ExternalLink } from "lucide-react";
 
 type Application = {
   id: string;
+  application_type: "founder" | "partner";
   business_name: string;
   first_name: string;
   last_name: string;
@@ -50,14 +51,46 @@ export default function UserManagementPage() {
   const fetchApplications = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/admin/applications");
-      const result = await response.json();
+      // Fetch both founder and partner applications in parallel
+      const [founderResponse, partnerResponse] = await Promise.all([
+        fetch("/api/admin/applications"),
+        fetch("/api/admin/partner-applications"),
+      ]);
 
-      if (!response.ok) {
-        setError(result.error || "Failed to load applications");
-        console.error("API error:", result);
+      const founderResult = await founderResponse.json();
+      const partnerResult = await partnerResponse.json();
+
+      if (!founderResponse.ok && !partnerResponse.ok) {
+        setError("Failed to load applications");
+        console.error("API errors:", { founderResult, partnerResult });
       } else {
-        setApplications(result.data || []);
+        // Map founder applications with type
+        const founderApps = (founderResult.data || []).map((app: any) => ({
+          ...app,
+          application_type: "founder" as const,
+          business_name: app.business_name,
+          first_name: app.first_name,
+          last_name: app.last_name,
+        }));
+
+        // Map partner applications with type and transform fields
+        const partnerApps = (partnerResult.data || []).map((app: any) => ({
+          ...app,
+          application_type: "partner" as const,
+          business_name: app.organization_name || "N/A",
+          first_name:
+            app.contact_name?.split(" ")[0] || app.contact_name || "N/A",
+          last_name: app.contact_name?.split(" ").slice(1).join(" ") || "",
+          position: "Partner", // Partners don't have a position field
+        }));
+
+        // Combine and sort by created_at (newest first)
+        const allApps = [...founderApps, ...partnerApps].sort(
+          (a, b) =>
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+
+        setApplications(allApps);
       }
     } catch (err) {
       setError("Failed to load applications");
@@ -89,11 +122,16 @@ export default function UserManagementPage() {
     }
   };
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id: string, type: "founder" | "partner") => {
     if (!confirm("Are you sure you want to delete this application?")) return;
 
     try {
-      const response = await fetch(`/api/admin/applications?id=${id}`, {
+      const endpoint =
+        type === "founder"
+          ? `/api/admin/applications?id=${id}`
+          : `/api/admin/partner-applications?id=${id}`;
+
+      const response = await fetch(endpoint, {
         method: "DELETE",
       });
 
@@ -130,11 +168,9 @@ export default function UserManagementPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-foreground">
-          Founder Applications
-        </h1>
+        <h1 className="text-2xl font-bold text-foreground">All Applications</h1>
         <p className="text-foreground/60 mt-2">
-          Manage all founder applications ({applications.length})
+          Manage all applications ({applications.length} total)
         </p>
       </div>
 
@@ -144,7 +180,7 @@ export default function UserManagementPage() {
           <Search className="w-5 h-5 text-foreground/40" />
           <input
             type="text"
-            placeholder="Search by name or email..."
+            placeholder="Search by name, email, or organization..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="flex-1 outline-none bg-transparent text-foreground placeholder-foreground/40"
@@ -158,6 +194,9 @@ export default function UserManagementPage() {
           <table className="w-full">
             <thead className="bg-secondary dark:bg-secondary">
               <tr>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
+                  Type
+                </th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                   Name
                 </th>
@@ -184,6 +223,19 @@ export default function UserManagementPage() {
                   key={app.id}
                   className="border-b border-border hover:bg-secondary/50 transition-colors"
                 >
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                        app.application_type === "founder"
+                          ? "bg-purple-50 dark:bg-purple-950 text-purple-600 dark:text-purple-400"
+                          : "bg-green-50 dark:bg-green-950 text-green-600 dark:text-green-400"
+                      }`}
+                    >
+                      {app.application_type === "founder"
+                        ? "Founder"
+                        : "Partner"}
+                    </span>
+                  </td>
                   <td className="px-6 py-4 text-foreground font-medium">
                     {app.first_name} {app.last_name}
                   </td>
@@ -216,7 +268,7 @@ export default function UserManagementPage() {
                       variant="ghost"
                       size="sm"
                       className="gap-2 text-destructive hover:text-destructive"
-                      onClick={() => handleDelete(app.id)}
+                      onClick={() => handleDelete(app.id, app.application_type)}
                     >
                       <Trash2 className="w-4 h-4" />
                       Delete

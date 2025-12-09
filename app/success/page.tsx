@@ -1,44 +1,44 @@
-"use client"
+"use client";
 
-import { Suspense, useEffect } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import { CheckCircle2 } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import { Suspense, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { CheckCircle2 } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 function SuccessContent() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const type = searchParams.get("type") || "application"
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const type = searchParams.get("type") || "application";
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/")
-    }, 5000)
+      router.push("/");
+    }, 5000);
 
-    return () => clearTimeout(timer)
-  }, [router])
+    return () => clearTimeout(timer);
+  }, [router]);
 
   const getTitle = () => {
     switch (type) {
       case "founder":
-        return "Founder Application Submitted!"
+        return "Founder Application Submitted!";
       case "partner":
-        return "Partner Application Submitted!"
+        return "Partner Application Submitted!";
       default:
-        return "Application Submitted Successfully!"
+        return "Application Submitted Successfully!";
     }
-  }
+  };
 
   const getMessage = () => {
     switch (type) {
       case "founder":
-        return "Thank you for submitting your founder application. Our team will review your submission and get back to you within 2 weeks."
+        return "Thank you for submitting your founder application. Our team will review your submission and get back to you within 2 weeks.";
       case "partner":
-        return "Thank you for your interest in partnering with us. Our team will review your application and contact you soon."
+        return "Thank you for your interest in partnering with us. Our team will review your application and contact you soon.";
       default:
-        return "Thank you for your submission. We will be in touch soon."
+        return "Thank you for your submission. We will be in touch soon.";
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
@@ -53,9 +53,7 @@ function SuccessContent() {
           {getTitle()}
         </h1>
 
-        <p className="text-lg text-foreground/70 mb-8">
-          {getMessage()}
-        </p>
+        <p className="text-lg text-foreground/70 mb-8">{getMessage()}</p>
 
         <div className="space-y-4">
           <p className="text-sm text-foreground/60">
@@ -85,17 +83,19 @@ function SuccessContent() {
         </div>
       </Card>
     </div>
-  )
+  );
 }
 
 export default function SuccessPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <p className="text-foreground">Loading...</p>
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-background">
+          <p className="text-foreground">Loading...</p>
+        </div>
+      }
+    >
       <SuccessContent />
     </Suspense>
-  )
+  );
 }
