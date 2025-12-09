@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,8 @@ import {
   faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 export default function VentureStudioPage() {
+  const router = useRouter();
+
   // FontAwesome icon mapping
   const iconMap = [
     { icon: faRocket, text: "early-stage founders" },
@@ -278,7 +281,10 @@ export default function VentureStudioPage() {
             landscape
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-primary dark:bg-primary text-primary-foreground hover:bg-primary/90 dark:hover:bg-amber-500 rounded-full px-8 py-6 text-base font-semibold">
+            <Button
+              onClick={() => router.push("/founder-form")}
+              className="bg-primary dark:bg-primary text-primary-foreground hover:bg-primary/90 dark:hover:bg-amber-500 rounded-full px-8 py-6 text-base font-semibold"
+            >
               Apply to the Venture Studio
             </Button>
           </div>

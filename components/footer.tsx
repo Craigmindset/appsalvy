@@ -6,35 +6,38 @@ const FOOTER_SECTIONS = [
     title: "Quick Links",
     links: [
       { label: "Home", href: "#home" },
-      { label: "Venture Studio", href: "#venture-studio" },
-      { label: "Venture Fund", href: "#venture-fund" },
-      { label: "Portfolio", href: "#portfolio" },
+      { label: "Venture Studio", href: "/venture-studio" },
+      { label: "Venture Fund", href: "/venture-fund" },
+      { label: "Portfolio", href: "/portfolio" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "#about" },
-      { label: "Partners & Ecosystems", href: "#partners" },
+      { label: "About Us", href: "/about" },
+      { label: "Partners & Ecosystems", href: "/partners-ecosystem" },
       { label: "Careers", href: "#careers" },
-      { label: "Impact", href: "#impact" },
+      { label: "Impact", href: "/impact" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "Media", href: "#media" },
       { label: "Gallery", href: "#gallery" },
-      { label: "Portfolio", href: "#portfolio" },
-      { label: "Policy", href: "#policy" },
+      { label: "Portfolio", href: "/portfolio" },
+      { label: "Policy", href: "/privacy" },
+      { label: "future", href: "/future-initiatives" },
     ],
   },
   {
     title: "Contact",
     links: [
-      { label: "Let's Talk", href: "#contact" },
-      { label: "LinkedIn", href: "https://linkedin.com", external: true },
-      { label: "Facebook", href: "https://facebook.com", external: true },
+      { label: "Let's Talk", href: "/contact" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/company/salvy-venturecorp/",
+        external: true,
+      },
     ],
   },
 ];
@@ -74,21 +77,21 @@ export function Footer() {
           {/* Social Icons */}
           <div className="flex gap-4 mb-12 pb-12 border-b border-gray-800">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/salvy-venturecorp/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-colors"
             >
               <Linkedin className="w-5 h-5 text-white" />
             </a>
-            <a
+            {/* <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-gray-800 hover:bg-primary flex items-center justify-center transition-colors"
             >
               <Facebook className="w-5 h-5 text-white" />
-            </a>
+            </a>*/}
           </div>
         </div>
       </footer>
