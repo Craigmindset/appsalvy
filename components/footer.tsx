@@ -97,23 +97,6 @@ export function Footer() {
       </footer>
 
       {/* Site Footer */}
-      <div className="w-full bg-blue-500 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-gray-400 text-sm">
-              © {currentYear} Salvy VentureCorp. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm text-gray-400">
-              <a href="#privacy" className="hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#terms" className="hover:text-white transition-colors">
-                Terms of Service
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
