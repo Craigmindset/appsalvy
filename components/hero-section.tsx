@@ -85,7 +85,7 @@ export function HeroSection() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+            <div className="flex flex-col sm:flex-row gap-4 pt-6 relative z-30">
               <a href="/founder-form" className="inline-block min-w-[220px]">
                 <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 text-base font-semibold inline-flex items-center justify-center gap-3 w-full">
                   <ArrowRight className="h-5 w-5" aria-hidden />
