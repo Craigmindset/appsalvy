@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, XCircle, Clock, ExternalLink, X } from "lucide-react";
@@ -37,12 +37,17 @@ export default function FounderApplicationPage() {
   const [selectedApplication, setSelectedApplication] =
     useState<Application | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const hasFetched = useRef(false);
 
   useEffect(() => {
-    fetchApplications();
+    if (!hasFetched.current) {
+      fetchApplications();
+      hasFetched.current = true;
+    }
   }, []);
 
   const fetchApplications = async () => {
+    setLoading(true);
     try {
       const response = await fetch("/api/admin/applications");
       const result = await response.json();

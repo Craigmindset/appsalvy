@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, X, Clock } from "lucide-react";
@@ -23,12 +23,17 @@ export default function PartnersApplicationPage() {
   const [selectedApplication, setSelectedApplication] =
     useState<PartnerApplication | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const hasFetched = useRef(false);
 
   useEffect(() => {
-    fetchApplications();
+    if (!hasFetched.current) {
+      fetchApplications();
+      hasFetched.current = true;
+    }
   }, []);
 
   const fetchApplications = async () => {
+    setLoading(true);
     try {
       const response = await fetch("/api/admin/partner-applications");
       const result = await response.json();
