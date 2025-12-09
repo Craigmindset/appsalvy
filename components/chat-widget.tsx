@@ -33,7 +33,7 @@ export function ChatWidget() {
         <div className="fixed bottom-24 right-6 z-50 md:bottom-32 md:right-8 space-y-3 animate-in fade-in slide-in-from-bottom-2 duration-300">
           {/* WhatsApp */}
           <a
-            href="https://wa.me/1234567890"
+            href="https://wa.me/+2349135111099"
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
@@ -59,7 +59,7 @@ export function ChatWidget() {
 
           {/* Email */}
           <a
-            href="mailto:info@salvy.ng"
+            href="mailto:info@salvy.ng?subject=Inquiry%20from%20Salvy%20Website"
             className={cn(
               "flex items-center gap-3 p-4 rounded-lg shadow-lg",
               "bg-card border border-border hover:border-primary transition-all",
@@ -89,7 +89,7 @@ export function ChatWidget() {
             </div>
             <div className="text-left">
               <p className="font-semibold text-sm">Call Us</p>
-              <p className="text-xs text-foreground/60">+1 (234) 567-890</p>
+              <p className="text-xs text-foreground/60">+2349135111099</p>
             </div>
           </a>
         </div>

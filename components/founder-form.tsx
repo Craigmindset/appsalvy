@@ -9,7 +9,12 @@ import { Attestation } from "@/components/attestation";
 export function FounderForm() {
   const router = useRouter();
   const [isRegistered, setIsRegistered] = useState<string>("");
+  const [registrationDate, setRegistrationDate] = useState("");
+  const [businessNumber, setBusinessNumber] = useState("");
   const [fundedBefore, setFundedBefore] = useState<string>("");
+  const [fundProvider, setFundProvider] = useState("");
+  const [fundAmount, setFundAmount] = useState("");
+  const [fundStage, setFundStage] = useState("");
   const [businessIdeology, setBusinessIdeology] = useState("");
   const [team, setTeam] = useState([{ name: "", email: "", position: "" }]);
   const [attest, setAttest] = useState(false);
@@ -70,21 +75,24 @@ export function FounderForm() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  // Helper to upload a file to Supabase Storage and return the public URL
+  // Helper to upload a file via API route
   async function uploadFile(file: File, folder: string) {
-    const fileExt = file.name.split(".").pop();
-    const fileName = `${folder}/${Date.now()}-${Math.random()
-      .toString(36)
-      .slice(2)}.${fileExt}`;
-    const { data, error } = await supabase.storage
-      .from("founder-docs")
-      .upload(fileName, file, { upsert: false });
-    if (error) throw error;
-    // Get public URL
-    const { data: publicUrlData } = supabase.storage
-      .from("founder-docs")
-      .getPublicUrl(fileName);
-    return publicUrlData.publicUrl;
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("folder", folder);
+
+    const response = await fetch("/api/founder-application", {
+      method: "PUT",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || "Upload failed");
+    }
+
+    const result = await response.json();
+    return result.url;
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -95,18 +103,25 @@ export function FounderForm() {
     try {
       let businessPitchUrl = null;
       let trackRecordsUrl = null;
+
       if (businessPitch) {
         businessPitchUrl = await uploadFile(businessPitch, "business-pitch");
       }
       if (trackRecords) {
         trackRecordsUrl = await uploadFile(trackRecords, "track-records");
       }
-      const { error } = await supabase.from("founder_applications").insert([
-        {
+
+      // Submit via API route
+      const response = await fetch("/api/founder-application", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           business_name: businessName,
           is_registered: isRegistered === "yes",
-          registration_date: isRegistered === "yes" ? undefined : null, // You can add registration date if you collect it
-          business_number: "", // Add if you collect it
+          registration_date: registrationDate || null,
+          business_number: businessNumber || null,
           website,
           first_name: firstName,
           last_name: lastName,
@@ -114,20 +129,29 @@ export function FounderForm() {
           email,
           phone,
           linkedin,
-          business_ideology: businessIdeology,
+          business_ideology: businessIdeology || null,
           funded_before: fundedBefore === "yes",
-          fund_provider: "", // Add if you collect it
-          fund_amount: null, // Add if you collect it
-          fund_stage: "", // Add if you collect it
+          fund_provider: fundProvider || null,
+          fund_amount: fundAmount ? parseFloat(fundAmount) : null,
+          fund_stage: fundStage || null,
           team: team,
           business_pitch_url: businessPitchUrl,
           track_records_url: trackRecordsUrl,
           attest,
-        },
-      ]);
-      if (error) throw error;
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Submission failed");
+      }
+
       setSubmitSuccess(true);
-      // Optionally reset form here
+      // Redirect to success page
+      setTimeout(() => {
+        router.push("/success?type=founder");
+      }, 1000);
     } catch (err: any) {
       setSubmitError(err.message || "Submission failed");
     } finally {
@@ -191,15 +215,31 @@ export function FounderForm() {
               placeholder="Business Registration Date"
               className="w-full border border-green-900 rounded p-2"
               required
+              value={registrationDate}
+              onChange={(e) => setRegistrationDate(e.target.value)}
+            />
+            <label className="block mb-1">Business Number (BN/RC/LLC)</label>
+            <input
+              type="text"
+              placeholder="Business Number (BN/RC/LLC)"
+              className="w-full border border-green-900 rounded p-2"
+              value={businessNumber}
+              onChange={(e) => setBusinessNumber(e.target.value)}
             />
           </>
         )}
-        <label className="block mb-1">Business Number (BN/RC/LLC)</label>
-        <input
-          type="text"
-          placeholder="Business Number (BN/RC/LLC)"
-          className="w-full border border-green-900 rounded p-2"
-        />
+        {isRegistered === "no" && (
+          <>
+            <label className="block mb-1">Business Number (BN/RC/LLC)</label>
+            <input
+              type="text"
+              placeholder="Business Number (BN/RC/LLC)"
+              className="w-full border border-green-900 rounded p-2"
+              value={businessNumber}
+              onChange={(e) => setBusinessNumber(e.target.value)}
+            />
+          </>
+        )}
         <label className="block mb-1">
           Website <span className="text-red-600">*</span>
         </label>
@@ -358,16 +398,24 @@ export function FounderForm() {
               type="text"
               placeholder="Fund Provider"
               className="w-full border border-green-900 rounded p-2"
+              value={fundProvider}
+              onChange={(e) => setFundProvider(e.target.value)}
             />
             <label className="block mb-1">Amount ($)</label>
             <input
               type="number"
               placeholder="Amount ($)"
               className="w-full border border-green-900 rounded p-2"
+              value={fundAmount}
+              onChange={(e) => setFundAmount(e.target.value)}
             />
             <label className="block mb-1">Fund Stage</label>
-            <select className="w-full border rounded p-2">
-              <option value="">Fund Stage</option>
+            <select
+              className="w-full border border-green-900 rounded p-2"
+              value={fundStage}
+              onChange={(e) => setFundStage(e.target.value)}
+            >
+              <option value="">Select Fund Stage</option>
               <option value="Angel Funding">Angel Funding</option>
               <option value="Pre-seed">Pre-seed</option>
               <option value="Seed">Seed</option>

@@ -17,7 +17,7 @@ export function PermissionGuard({ children }: { children: React.ReactNode }) {
       setAuthenticated(!!session);
       setLoading(false);
       if (!session) {
-        router.replace("/login");
+        router.replace("/admin");
       }
     };
     checkAuth();

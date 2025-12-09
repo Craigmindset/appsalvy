@@ -56,13 +56,14 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check authentication on mount
-    if (!checkAuth()) {
+    // Check authentication on mount only
+    const token = localStorage.getItem("adminToken");
+    if (!token) {
       router.push("/admin");
     } else {
       setIsLoading(false);
     }
-  }, [checkAuth, router]);
+  }, []); // Empty dependency array - only run once on mount
 
   if (isLoading) {
     return (

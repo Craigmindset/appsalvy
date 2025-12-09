@@ -12,6 +12,9 @@ export function PartnerForm() {
   const [linkedin, setLinkedin] = useState("");
   const [website, setWebsite] = useState("");
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   // Validation helpers
   const isEmailValid = email.includes("@") && email.length > 3;
@@ -30,8 +33,51 @@ export function PartnerForm() {
     isLinkedinValid &&
     isWebsiteValid;
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setSubmitError(null);
+    setSubmitSuccess(false);
+
+    try {
+      const response = await fetch("/api/admin/partner-applications", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          organization_name: orgName,
+          contact_name: contactName,
+          email,
+          phone,
+          linkedin,
+          website,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Submission failed");
+      }
+
+      setSubmitSuccess(true);
+      // Redirect to success page
+      setTimeout(() => {
+        router.push("/success?type=partner");
+      }, 1000);
+    } catch (err: any) {
+      setSubmitError(err.message || "Submission failed");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
-    <form className="max-w-lg mx-auto p-4 space-y-8 relative">
+    <form
+      className="max-w-lg mx-auto p-4 space-y-8 relative"
+      onSubmit={handleSubmit}
+    >
       {/* Close Icon */}
       <button
         type="button"
@@ -151,14 +197,22 @@ export function PartnerForm() {
         )}
       </div>
       <hr />
+      {submitError && (
+        <div className="text-red-600 text-sm mb-2">{submitError}</div>
+      )}
+      {submitSuccess && (
+        <div className="text-green-700 text-sm mb-2">
+          Application submitted successfully!
+        </div>
+      )}
       <button
         type="submit"
         className={`w-full bg-red-600 text-white rounded-full py-3 font-bold mt-2 transition-opacity ${
-          !isFormValid ? "opacity-50 cursor-not-allowed" : ""
+          !isFormValid || submitting ? "opacity-50 cursor-not-allowed" : ""
         }`}
-        disabled={!isFormValid}
+        disabled={!isFormValid || submitting}
       >
-        Submit
+        {submitting ? "Submitting..." : "Submit"}
       </button>
     </form>
   );

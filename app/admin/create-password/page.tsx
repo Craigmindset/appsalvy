@@ -1,38 +1,49 @@
 "use client";
 
-import type React from "react";
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
-export default function AdminLoginPage() {
+export default function CreatePasswordPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Check for password reset success message
-    if (searchParams.get("password-reset") === "success") {
-      setSuccessMessage(
-        "Password updated successfully! Please log in with your new password."
-      );
+    const emailParam = searchParams.get("email");
+    if (!emailParam) {
+      router.push("/admin/forgot-password");
+    } else {
+      setEmail(emailParam);
     }
-  }, [searchParams]);
+  }, [searchParams, router]);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    // Validation
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      const res = await fetch("/api/admin/login", {
+      const res = await fetch("/api/admin/update-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -41,21 +52,16 @@ export default function AdminLoginPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Invalid email or password");
+        setError(data.error || "Failed to update password");
         setIsLoading(false);
         return;
       }
 
-      if (data.success) {
-        localStorage.setItem("adminToken", "admin-token-" + Date.now());
-        localStorage.setItem("adminEmail", email);
-        router.push("/admin/dashboard");
-      } else {
-        setError("Invalid email or password");
-        setIsLoading(false);
-      }
+      // Success - redirect to login
+      router.push("/admin?password-reset=success");
     } catch (err) {
       setError("Network error. Please try again later.");
+    } finally {
       setIsLoading(false);
     }
   };
@@ -86,15 +92,12 @@ export default function AdminLoginPage() {
 
         {/* Form Container */}
         <div className="bg-card rounded-xl border border-border p-8 shadow-lg">
-          <h1 className="text-2xl font-bold text-foreground mb-10 text-center">
-            Admin Login
+          <h1 className="text-2xl font-bold text-foreground mb-2 text-center">
+            Create New Password
           </h1>
-
-          {successMessage && (
-            <div className="mb-4 p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-500/30 text-green-700 dark:text-green-400 text-sm">
-              {successMessage}
-            </div>
-          )}
+          <p className="text-sm text-muted-foreground mb-6 text-center">
+            Enter a new password for {email}
+          </p>
 
           {error && (
             <div className="mb-4 p-4 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive text-sm">
@@ -102,35 +105,21 @@ export default function AdminLoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-4">
-            {/* Email Input */}
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* New Password Input */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground">
-                Email Address
-              </label>
-              <Input
-                type="email"
-                placeholder="admin@salvyventure.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full"
-                required
-              />
-            </div>
-
-            {/* Password Input */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-foreground">
-                Password
+                New Password
               </label>
               <div className="relative">
                 <Input
                   type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
+                  placeholder="Enter new password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full pr-10"
                   required
+                  minLength={8}
                 />
                 <button
                   type="button"
@@ -140,16 +129,25 @@ export default function AdminLoginPage() {
                   {showPassword ? "🙈" : "👁️"}
                 </button>
               </div>
+              <p className="text-xs text-muted-foreground">
+                Must be at least 8 characters long
+              </p>
             </div>
 
-            {/* Forgot Password Link */}
-            <div className="flex justify-end">
-              <Link
-                href="/admin/forgot-password"
-                className="text-sm text-primary hover:text-primary/80 transition-colors"
-              >
-                Forgot password?
-              </Link>
+            {/* Confirm Password Input */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">
+                Confirm Password
+              </label>
+              <Input
+                type={showPassword ? "text" : "password"}
+                placeholder="Confirm new password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full"
+                required
+                minLength={8}
+              />
             </div>
 
             {/* Submit Button */}
@@ -158,9 +156,19 @@ export default function AdminLoginPage() {
               disabled={isLoading}
               className="w-full bg-red-600 text-white hover:bg-red-700 font-semibold py-2"
             >
-              {isLoading ? "Signing in..." : "Sign In"}
+              {isLoading ? "Updating..." : "Update Password"}
             </Button>
           </form>
+
+          {/* Back to Login */}
+          <div className="mt-6 text-center">
+            <Link
+              href="/admin"
+              className="text-sm text-primary hover:text-primary/80 transition-colors"
+            >
+              Back to Login
+            </Link>
+          </div>
         </div>
       </div>
     </div>
