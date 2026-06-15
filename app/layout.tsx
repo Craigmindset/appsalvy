@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ChatWidget } from "@/components/chat-widget";
 
 export const metadata: Metadata = {
-  title: "Salvy Venture - Building Africa's Next Generation of Companies",
+  title: "Salvy Venture  Building Africa's Next Generation of Companies",
   description:
     "Salvy VentureCorp is a Venture Architecture Studio designing, building, and scaling high-impact African ventures with structure, discipline, capital, and talent.",
   verification: {
