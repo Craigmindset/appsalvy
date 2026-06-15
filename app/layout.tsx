@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Salvy Venture - Building Africa's Next Generation of Companies",
   description:
     "Salvy VentureCorp is a Venture Architecture Studio designing, building, and scaling high-impact African ventures with structure, discipline, capital, and talent.",
+  verification: {
+    google: "hKIeuIjfaqGOPzySTPqVzego86akjBKYy1OKN4-YeTY",
+  },
   icons: {
     icon: "/salvy-logo.png",
   },
